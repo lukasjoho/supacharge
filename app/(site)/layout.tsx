@@ -6,10 +6,10 @@ interface SiteLayoutProps {
 
 const SiteLayout = ({ children }: SiteLayoutProps) => {
   return (
-    <div>
+    <>
       <Header />
       {children}
-    </div>
+    </>
   );
 };
 

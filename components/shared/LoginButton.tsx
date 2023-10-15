@@ -1,15 +1,30 @@
 'use client';
+import { cn } from '@/lib/utils';
 import { signIn, signOut, useSession } from 'next-auth/react';
 import { Button } from '../ui/button';
 
-const LoginButton = () => {
+interface LoginButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
+  loggedOut?: React.ReactNode;
+  loggedIn?: React.ReactNode;
+}
+
+const LoginButton = ({
+  loggedOut = 'Log in',
+  loggedIn = 'Log out',
+  ...props
+}: LoginButtonProps) => {
   const { data: session } = useSession();
+  const { className, ...rest } = props;
   return (
     <>
       {session ? (
-        <Button onClick={() => signOut()}>Logout</Button>
+        <Button className={cn('', className)} onClick={() => signOut()}>
+          {loggedIn}
+        </Button>
       ) : (
-        <Button onClick={() => signIn('google')}>Login</Button>
+        <Button className={cn('', className)} onClick={() => signIn('google')}>
+          {loggedOut}
+        </Button>
       )}
     </>
   );
