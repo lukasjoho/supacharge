@@ -2,30 +2,12 @@ import { LucideProps } from 'lucide-react';
 
 export const Icons = {
   logoBase: (props: LucideProps) => (
-    <svg
-      viewBox="0 0 124 124"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      {...props}
-    >
+    <svg viewBox="0 0 124 124" fill="none" {...props}>
       <path
         d="M8 77.3708L62.5001 23L117 77.3708M33.1538 102L62.5001 72.7237L91.8466 102"
-        stroke="url(#paint0_linear_102_999)"
-        stroke-width="18.9549"
+        stroke="#26BC58"
+        strokeWidth="18.9549"
       />
-      <defs>
-        <linearGradient
-          id="paint0_linear_102_999"
-          x1="62.5001"
-          y1="23"
-          x2="62.5001"
-          y2="102"
-          gradientUnits="userSpaceOnUse"
-        >
-          <stop stop-color="#31DF6B" />
-          <stop offset="1" stop-color="#26BC58" />
-        </linearGradient>
-      </defs>
     </svg>
   ),
   google: (props: LucideProps) => (
@@ -33,14 +15,7 @@ export const Icons = {
       stroke="currentColor"
       fill="currentColor"
       strokeWidth="0"
-      version="1.1"
-      x="0px"
-      y="0px"
       viewBox="0 0 48 48"
-      enable-background="new 0 0 48 48"
-      height="1em"
-      width="1em"
-      xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
       <path

@@ -8,9 +8,9 @@ const GetStarted = () => {
     <section id="getstarted">
       <Container>
         <div className="flex flex-col items-center gap-4">
-          <Icons.logoBase className="w-48" />
+          <Icons.logoBase className="w-32 md:w-64" />
 
-          <Title className="text-center text-7xl">
+          <Title className="text-center text-4xl md:text-7xl">
             Unleash the power <br />
             of experimentation now.
           </Title>

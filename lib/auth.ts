@@ -27,22 +27,7 @@ export const authOptions: NextAuthOptions = {
         session.user.image = token.image;
         session.user.teams = token.teams;
         session.user.currentTeam = token.currentTeam;
-        // session.user.hasCompletedSignUp = token.hasCompletedSignUp;
-        // session.user.spaces = token.spaces;
-        // session.user.currentSpace = token.currentSpace;
       }
-      //   const connectedUser = await prisma.user.update({
-      //     where: {
-      //       email: token.email,
-      //     },
-      //     data: {
-      //       spaces: {
-      //         connect: {
-      //           id: 'cljddlzin0000w3tz7bfcl41d',
-      //         },
-      //       },
-      //     },
-      //   });
 
       return session;
     },

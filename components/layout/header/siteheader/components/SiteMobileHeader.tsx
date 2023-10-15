@@ -1,4 +1,4 @@
-import LoginButton from '@/components/shared/LoginButton';
+import GoToAppButton from '@/components/shared/GoToAppButton';
 import Link from 'next/link';
 import MobileHeader, {
   MobileMenu,
@@ -12,7 +12,7 @@ const SiteMobileHeader = () => {
     <MobileHeader>
       <MobileNavbar>
         <ToggleMenu />
-        <LoginButton />
+        <GoToAppButton size="sm" />
       </MobileNavbar>
       <MobileMenu>
         <nav className="pb-3">
@@ -22,7 +22,7 @@ const SiteMobileHeader = () => {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-3xl block font-semibold text-center"
+                    className="text-3xl block font-semibold text-center py-8"
                   >
                     {item.label}
                   </Link>
@@ -30,7 +30,7 @@ const SiteMobileHeader = () => {
               );
             })}
           </ul>
-          <LoginButton className="w-full" />
+          <GoToAppButton size="default" className="w-full" />
         </nav>
       </MobileMenu>
     </MobileHeader>
