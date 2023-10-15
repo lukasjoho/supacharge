@@ -28,7 +28,9 @@ model User {
 model Project {
   id          String   @id @default(cuid())
   name        String
-  description String?
+  hypothesis String?
+  startDate   DateTime?
+  endDate     DateTime?
   user        User?     @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId      String?
   team        Team     @relation(fields: [teamId], references: [id], onDelete: Cascade)
