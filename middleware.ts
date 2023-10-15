@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export async function middleware(req: NextRequest) {
   const path = req.nextUrl.pathname;
-  if (path.startsWith('/space')) {
+  if (path.startsWith('/team')) {
     const session = await getToken({
       req,
       secret: process.env.NEXTAUTH_SECRET,

@@ -1,1 +1,1 @@
-export { default } from './SpaceHeader';
+export { default } from './TeamHeader';

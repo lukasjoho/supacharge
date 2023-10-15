@@ -20,16 +20,31 @@ model User {
   accounts      Account[]
   sessions      Session[]
   projects      Project[]
+  teams         Team[]
+  currentTeam   Team?     @relation("CurrentTeamUsers", fields: [currentTeamId], references: [id])
+  currentTeamId String?
 }
 
 model Project {
   id          String   @id @default(cuid())
   name        String
   description String?
-  userId      String?
   user        User?     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId      String?
+  team        Team     @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  teamId      String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+}
+
+model Team {
+  id          String   @id @default(cuid())
+  name        String
+  imageUrl    String?
+  users       User[]
+  projects    Project[]
+  currentUsers User[] @relation("CurrentTeamUsers")
+
 }
 
 model Account {

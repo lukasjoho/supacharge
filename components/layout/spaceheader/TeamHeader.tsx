@@ -2,7 +2,7 @@ import Container from '@/components/Container';
 import AvatarDropdown from './components/AvatarDropdown';
 import { TeamSelector } from './components/TeamSelector';
 
-const SpaceHeader = () => {
+const TeamHeader = () => {
   return (
     <div className="border-b">
       <Container className="h-16 flex justify-between items-center">
@@ -13,4 +13,4 @@ const SpaceHeader = () => {
   );
 };
 
-export default SpaceHeader;
+export default TeamHeader;

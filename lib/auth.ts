@@ -70,10 +70,15 @@ export const authOptions: NextAuthOptions = {
       };
     },
     redirect() {
-      return '/space';
+      return '/team';
     },
   },
   secret: process.env.NEXTAUTH_SECRET!,
 };
 
 export const getAuthSession = () => getServerSession(authOptions);
+
+export const getAuthUser = async () => {
+  const session = await getAuthSession();
+  return session?.user;
+};
