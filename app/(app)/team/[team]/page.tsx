@@ -1,9 +1,9 @@
 import { getAuthUser } from '@/lib/auth';
+import { redirect } from 'next/navigation';
 
 const TeamPage = async ({ params }: { params: { team: string } }) => {
   const authUser = await getAuthUser();
-
-  return <div>{JSON.stringify(authUser, null, 2)}</div>;
+  redirect(`/team/${params.team}/dashboard`);
 };
 
 export default TeamPage;

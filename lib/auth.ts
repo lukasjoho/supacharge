@@ -26,6 +26,7 @@ export const authOptions: NextAuthOptions = {
         session.user.email = token.email;
         session.user.image = token.image;
         session.user.teams = token.teams;
+        session.user.currentTeam = token.currentTeam;
         // session.user.hasCompletedSignUp = token.hasCompletedSignUp;
         // session.user.spaces = token.spaces;
         // session.user.currentSpace = token.currentSpace;
@@ -59,6 +60,13 @@ export const authOptions: NextAuthOptions = {
               name: true,
             },
           },
+          currentTeam: {
+            select: {
+              id: true,
+              slug: true,
+              name: true,
+            },
+          },
         },
       });
       if (!dbUser) {
@@ -71,6 +79,7 @@ export const authOptions: NextAuthOptions = {
         email: dbUser.email,
         image: dbUser.image,
         teams: dbUser.teams,
+        currentTeam: dbUser.currentTeam,
         // spaces: dbUser.spaces,
         // currentSpace: dbUser.currentSpace,
         // hasCompletedSignUp: dbUser.hasCompletedSignUp,

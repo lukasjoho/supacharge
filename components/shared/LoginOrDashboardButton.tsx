@@ -11,7 +11,7 @@ const LoginOrDashboardButton = (props: any) => {
     <>
       {session ? (
         <Link
-          href="/team/dashboard"
+          href={`/team`}
           className={cn(buttonVariants({ variant: 'default' }))}
         >
           Go to app
