@@ -1,13 +1,13 @@
 import Container from '@/components/layout/Container';
 import BrandLogo from '@/components/shared/BrandLogo';
-import LoginButton from '@/components/shared/LoginButton';
+import LoginOrDashboardButton from '@/components/shared/LoginOrDashboardButton';
 
 const SiteDesktopHeader = () => {
   return (
     <div className="border-b">
       <Container className="flex items-center justify-between h-16">
         <BrandLogo />
-        <LoginButton />
+        <LoginOrDashboardButton />
       </Container>
     </div>
   );

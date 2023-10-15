@@ -1,9 +1,11 @@
 import { getAuthUser } from '@/lib/auth';
 import prisma from '@/lib/prisma';
-import { Button } from '../ui/button';
+import { cn } from '@/lib/utils';
+import Link from 'next/link';
+import { Button, buttonVariants } from '../ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 
-const TeamsSelection = async () => {
+const TeamsManager = async () => {
   const authUser = await getAuthUser();
   if (!authUser) return;
   const user = await prisma.user.findUnique({
@@ -17,19 +19,26 @@ const TeamsSelection = async () => {
   return (
     <Card className="w-[300px]">
       <CardHeader>
-        <CardTitle>Select a team</CardTitle>
+        <CardTitle>Your teams</CardTitle>
       </CardHeader>
-      <CardContent>
+      <CardContent className="space-y-2">
         {user?.teams.map((team) => (
-          <Button variant="secondary" key={team.id}>
+          <Link
+            href={`/team/${team.slug}`}
+            key={team.id}
+            className={cn(
+              buttonVariants({ variant: 'secondary' }),
+              'w-full justify-start'
+            )}
+          >
             {team.name}
-          </Button>
+          </Link>
         ))}
-        <p className="text-sm text-muted-foreground">or</p>
-        <Button>Create new team</Button>
+        <p className="text-sm text-muted-foreground text-center">or</p>
+        <Button className="w-full">Create new team</Button>
       </CardContent>
     </Card>
   );
 };
 
-export default TeamsSelection;
+export default TeamsManager;

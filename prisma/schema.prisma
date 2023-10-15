@@ -42,6 +42,7 @@ model Project {
 model Team {
   id          String   @id @default(cuid())
   name        String
+  slug        String   @unique
   imageUrl    String?
   users       User[]
   projects    Project[]

@@ -25,6 +25,7 @@ export const authOptions: NextAuthOptions = {
         session.user.name = token.name;
         session.user.email = token.email;
         session.user.image = token.image;
+        session.user.teams = token.teams;
         // session.user.hasCompletedSignUp = token.hasCompletedSignUp;
         // session.user.spaces = token.spaces;
         // session.user.currentSpace = token.currentSpace;
@@ -50,10 +51,15 @@ export const authOptions: NextAuthOptions = {
         where: {
           email: token.email,
         },
-        // include: {
-        //   spaces: true,
-        //   currentSpace: true,
-        // },
+        include: {
+          teams: {
+            select: {
+              id: true,
+              slug: true,
+              name: true,
+            },
+          },
+        },
       });
       if (!dbUser) {
         token.id = user!.id;
@@ -64,6 +70,7 @@ export const authOptions: NextAuthOptions = {
         name: dbUser.name,
         email: dbUser.email,
         image: dbUser.image,
+        teams: dbUser.teams,
         // spaces: dbUser.spaces,
         // currentSpace: dbUser.currentSpace,
         // hasCompletedSignUp: dbUser.hasCompletedSignUp,

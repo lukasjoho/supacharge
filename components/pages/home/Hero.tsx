@@ -1,4 +1,5 @@
 import Container from '@/components/layout/Container';
+import LoginOrDashboardButton from '@/components/shared/LoginOrDashboardButton';
 import Title from '@/components/shared/Title';
 import { Button } from '@/components/ui/button';
 
@@ -16,7 +17,7 @@ const Hero = () => {
           data focus and hypothesis-centricity to your team.
         </p>
         <div className="flex gap-2">
-          <Button>Get started</Button>
+          <LoginOrDashboardButton loggedOut="Get Started" />
           <Button variant="outline">View demo</Button>
         </div>
       </Container>
