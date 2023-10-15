@@ -11,7 +11,7 @@ interface ModalPortalProps {
 }
 export function ModalPortal({ children }: ModalPortalProps) {
   const { windowSize, isMobile, isDesktop } = useWindowSize();
-  const { isOpen, hide } = useContext(ModalContext);
+  const { hide } = useContext(ModalContext);
   function onKeyDown(e: KeyboardEvent) {
     if (e.key === 'Escape') {
       hide();
