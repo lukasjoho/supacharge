@@ -7,6 +7,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { getAuthSession } from '@/lib/auth';
 import { Monitor } from 'lucide-react';
+import Link from 'next/link';
 import LogOutDropdownItem from './LogOutDropdownItem';
 
 const AvatarDropdown = async () => {
@@ -17,9 +18,11 @@ const AvatarDropdown = async () => {
         <UserAvatar user={session?.user} />
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        <DropdownMenuItem>
-          <Monitor className="mr-2 h-4 w-4" />
-          Website
+        <DropdownMenuItem asChild>
+          <Link href="/">
+            <Monitor className="mr-2 h-4 w-4" />
+            Website
+          </Link>
         </DropdownMenuItem>
 
         <LogOutDropdownItem />
