@@ -14,7 +14,7 @@ const LoginButton = ({
   ...props
 }: LoginButtonProps) => {
   const { data: session } = useSession();
-  const { className, ...rest } = props;
+  const { className } = props;
   return (
     <>
       {session ? (
