@@ -1,4 +1,3 @@
-import LoginButton from '@/components/shared/LoginButton';
 import Link from 'next/link';
 import MobileHeader, {
   MobileMenu,
@@ -31,7 +30,6 @@ const AppMobileHeader = () => {
               );
             })}
           </ul>
-          <LoginButton className="w-full" />
         </nav>
       </MobileMenu>
     </MobileHeader>
