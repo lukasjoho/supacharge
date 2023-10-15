@@ -1,4 +1,5 @@
 import AuthProvider from '@/components/providers/SessionProvider';
+import { ModalProvider } from '@/components/shared/modal';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
@@ -19,7 +20,9 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <body className={inter.className}>
         <main className="flex min-h-screen flex-col">
-          <AuthProvider>{children}</AuthProvider>
+          <ModalProvider>
+            <AuthProvider>{children}</AuthProvider>
+          </ModalProvider>
         </main>
       </body>
     </html>

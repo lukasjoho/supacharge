@@ -1,4 +1,4 @@
-import Spaceheader from '@/components/layout/spaceheader';
+import Teamheader from '@/components/layout/teamheader';
 import React from 'react';
 
 interface AppLayoutProps {
@@ -8,7 +8,7 @@ interface AppLayoutProps {
 const AppLayout = ({ children }: AppLayoutProps) => {
   return (
     <>
-      <Spaceheader />
+      <Teamheader />
       {children}
     </>
   );

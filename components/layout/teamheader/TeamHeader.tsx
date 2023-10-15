@@ -1,4 +1,5 @@
 import Container from '@/components/Container';
+import NewProjectButton from '@/components/shared/new/NewProjectButton';
 import AvatarDropdown from './components/AvatarDropdown';
 import { TeamSelector } from './components/TeamSelector';
 
@@ -7,7 +8,10 @@ const TeamHeader = () => {
     <div className="border-b">
       <Container className="h-16 flex justify-between items-center">
         <TeamSelector />
-        <AvatarDropdown />
+        <div className="flex items-center gap-4">
+          <NewProjectButton />
+          <AvatarDropdown />
+        </div>
       </Container>
     </div>
   );
