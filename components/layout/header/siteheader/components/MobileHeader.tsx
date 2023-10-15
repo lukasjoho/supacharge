@@ -3,10 +3,11 @@ import { AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { FC, createContext, useContext, useState } from 'react';
 
-import Container from '@/components/Container';
+import Container from '@/components/layout/Container';
 import LoginButton from '@/components/shared/LoginButton';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 import { SITE_NAV_ITEMS } from '../lib/site-nav-items';
 
 const MobileHeaderContext = createContext<{
@@ -76,11 +77,20 @@ const MobileMenu = () => {
           <Container>
             <nav className="pb-3">
               <ul>
-                {SITE_NAV_ITEMS.map((item: any) => {
-                  return <li key={item.href}></li>;
+                {SITE_NAV_ITEMS.map((item) => {
+                  return (
+                    <li key={item.href}>
+                      <Link
+                        href={item.href}
+                        className="text-3xl block font-semibold text-center"
+                      >
+                        {item.label}
+                      </Link>
+                    </li>
+                  );
                 })}
               </ul>
-              <LoginButton />
+              <LoginButton className="w-full" />
             </nav>
           </Container>
         </motion.div>

@@ -14,15 +14,24 @@ const LoginButton = ({
   ...props
 }: LoginButtonProps) => {
   const { data: session } = useSession();
-  const { className } = props;
+  const { className, ...rest } = props;
   return (
     <>
       {session ? (
-        <Button className={cn('', className)} onClick={() => signOut()}>
+        <Button
+          className={cn('', className)}
+          onClick={() => signOut()}
+          {...rest}
+          variant="secondary"
+        >
           {loggedIn}
         </Button>
       ) : (
-        <Button className={cn('', className)} onClick={() => signIn('google')}>
+        <Button
+          className={cn('', className)}
+          onClick={() => signIn('google')}
+          {...rest}
+        >
           {loggedOut}
         </Button>
       )}

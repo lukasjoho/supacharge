@@ -1,7 +1,7 @@
 import DesktopHeader from './components/DesktopHeader';
 import MobileHeader from './components/MobileHeader';
 
-const Header = () => {
+const SiteHeader = () => {
   return (
     <>
       <div className="hidden md:block">
@@ -14,4 +14,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default SiteHeader;

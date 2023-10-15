@@ -1,4 +1,4 @@
-import Container from '@/components/Container';
+import Container from '@/components/layout/Container';
 import { Icons } from '@/components/shared/Icons';
 import Title from '@/components/shared/Title';
 import { Button } from '@/components/ui/button';

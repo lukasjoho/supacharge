@@ -1,10 +1,10 @@
-import Container from '@/components/Container';
+import Container from '@/components/layout/Container';
 import NewProjectButton from '@/components/shared/new/NewProjectButton';
 import AvatarDropdown from './components/AvatarDropdown';
 import Navbar from './components/Navbar';
 import { TeamSelector } from './components/TeamSelector';
 
-const TeamHeader = () => {
+const AppHeader = () => {
   return (
     <div className="border-b">
       <Container className="h-16 flex justify-between items-center gap-8">
@@ -19,4 +19,4 @@ const TeamHeader = () => {
   );
 };
 
-export default TeamHeader;
+export default AppHeader;

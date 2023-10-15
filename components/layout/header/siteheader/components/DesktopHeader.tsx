@@ -1,4 +1,4 @@
-import Container from '@/components/Container';
+import Container from '@/components/layout/Container';
 import BrandLogo from '@/components/shared/BrandLogo';
 import LoginButton from '@/components/shared/LoginButton';
 

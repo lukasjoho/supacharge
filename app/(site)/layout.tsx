@@ -1,4 +1,4 @@
-import Header from '@/components/layout/header';
+import Siteheader from '@/components/layout/header/siteheader';
 
 interface SiteLayoutProps {
   children: React.ReactNode;
@@ -7,7 +7,7 @@ interface SiteLayoutProps {
 const SiteLayout = ({ children }: SiteLayoutProps) => {
   return (
     <>
-      <Header />
+      <Siteheader />
       {children}
     </>
   );
