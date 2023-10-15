@@ -2,7 +2,7 @@ import Container from '@/components/layout/Container';
 import BrandLogo from '@/components/shared/BrandLogo';
 import LoginButton from '@/components/shared/LoginButton';
 
-const DesktopHeader = () => {
+const SiteDesktopHeader = () => {
   return (
     <div className="border-b">
       <Container className="flex items-center justify-between h-16">
@@ -13,4 +13,4 @@ const DesktopHeader = () => {
   );
 };
 
-export default DesktopHeader;
+export default SiteDesktopHeader;

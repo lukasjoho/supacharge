@@ -4,11 +4,8 @@ import { Menu, X } from 'lucide-react';
 import { FC, createContext, useContext, useState } from 'react';
 
 import Container from '@/components/layout/Container';
-import LoginButton from '@/components/shared/LoginButton';
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
-import Link from 'next/link';
-import { SITE_NAV_ITEMS } from '../lib/site-nav-items';
 
 const MobileHeaderContext = createContext<{
   isOpen: boolean;
@@ -18,9 +15,11 @@ const MobileHeaderContext = createContext<{
   setIsOpen: () => {},
 });
 
-interface MobileHeaderProps extends React.HTMLAttributes<HTMLDivElement> {}
+interface MobileHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
+  children: React.ReactNode;
+}
 
-const MobileHeader: FC<MobileHeaderProps> = ({ ...props }) => {
+const MobileHeader: FC<MobileHeaderProps> = ({ children, ...props }) => {
   const [isOpen, setIsOpen] = useState(false);
   const { className, ...rest } = props;
   return (
@@ -29,13 +28,7 @@ const MobileHeader: FC<MobileHeaderProps> = ({ ...props }) => {
         {...rest}
         className={cn('fixed top-0 z-40 w-full bg-background', className)}
       >
-        <Container>
-          <div className="relative flex h-12 items-center justify-between">
-            <ToggleMenu />
-            <LoginButton />
-          </div>
-        </Container>
-        <MobileMenu />
+        {children}
       </div>
     </MobileHeaderContext.Provider>
   );
@@ -43,7 +36,21 @@ const MobileHeader: FC<MobileHeaderProps> = ({ ...props }) => {
 
 export default MobileHeader;
 
-const ToggleMenu = () => {
+interface MobileNavbarProps {
+  children: React.ReactNode;
+}
+
+export const MobileNavbar = ({ children }: MobileNavbarProps) => {
+  return (
+    <Container>
+      <div className="relative flex h-12 items-center justify-between">
+        {children}
+      </div>
+    </Container>
+  );
+};
+
+export const ToggleMenu = () => {
   const { isOpen, setIsOpen } = useContext(MobileHeaderContext);
   return (
     <div onClick={() => setIsOpen((prevIsOpen) => !prevIsOpen)}>
@@ -52,7 +59,11 @@ const ToggleMenu = () => {
   );
 };
 
-const MobileMenu = () => {
+interface MobileMenuProps {
+  children: React.ReactNode;
+}
+
+export const MobileMenu = ({ children }: MobileMenuProps) => {
   const { isOpen, setIsOpen } = useContext(MobileHeaderContext);
   return (
     <AnimatePresence>
@@ -74,25 +85,7 @@ const MobileMenu = () => {
           }}
           key="mobile-menu"
         >
-          <Container>
-            <nav className="pb-3">
-              <ul>
-                {SITE_NAV_ITEMS.map((item) => {
-                  return (
-                    <li key={item.href}>
-                      <Link
-                        href={item.href}
-                        className="text-3xl block font-semibold text-center"
-                      >
-                        {item.label}
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ul>
-              <LoginButton className="w-full" />
-            </nav>
-          </Container>
+          <Container>{children}</Container>
         </motion.div>
       )}
     </AnimatePresence>

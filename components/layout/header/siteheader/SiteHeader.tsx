@@ -1,14 +1,14 @@
-import DesktopHeader from './components/DesktopHeader';
-import MobileHeader from './components/MobileHeader';
+import SiteDesktopHeader from './components/SiteDesktopHeader';
+import SiteMobileHeader from './components/SiteMobileHeader';
 
 const SiteHeader = () => {
   return (
     <>
       <div className="hidden md:block">
-        <DesktopHeader />
+        <SiteDesktopHeader />
       </div>
       <div className="md:hidden">
-        <MobileHeader />
+        <SiteMobileHeader />
       </div>
     </>
   );
