@@ -1,3 +1,4 @@
+import AuthProvider from '@/components/providers/SessionProvider';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
@@ -17,7 +18,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className={inter.className}>
-        <main className="flex min-h-screen flex-col">{children}</main>
+        <main className="flex min-h-screen flex-col">
+          <AuthProvider>{children}</AuthProvider>
+        </main>
       </body>
     </html>
   );
