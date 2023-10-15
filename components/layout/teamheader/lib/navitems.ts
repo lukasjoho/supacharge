@@ -1,4 +1,4 @@
-export const NAVITEMS = [
+export const APP_NAV_ITEMS = [
   {
     label: 'Dashboard',
     href: '/dashboard',

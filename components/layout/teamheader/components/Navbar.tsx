@@ -3,7 +3,7 @@ import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { NAVITEMS } from '../lib/navitems';
+import { APP_NAV_ITEMS } from '../lib/navitems';
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -11,7 +11,7 @@ const Navbar = () => {
   return (
     <nav className="mr-auto">
       <ul className="flex">
-        {NAVITEMS.map((item) => {
+        {APP_NAV_ITEMS.map((item) => {
           return (
             <li key={item.href}>
               <Link
