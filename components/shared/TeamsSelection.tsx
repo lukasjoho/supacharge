@@ -21,7 +21,9 @@ const TeamsSelection = async () => {
       </CardHeader>
       <CardContent>
         {user?.teams.map((team) => (
-          <Button variant="secondary">{team.name}</Button>
+          <Button variant="secondary" key={team.id}>
+            {team.name}
+          </Button>
         ))}
         <p className="text-sm text-muted-foreground">or</p>
         <Button>Create new team</Button>
