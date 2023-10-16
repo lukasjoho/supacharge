@@ -25,6 +25,7 @@
     "cmdk": "^0.2.0",
     "date-fns": "^2.30.0",
     "framer-motion": "^10.16.4",
+    "lodash.debounce": "^4.0.8",
     "lucide-react": "^0.287.0",
     "next": "13.5.4",
     "next-auth": "^4.23.2",
@@ -37,6 +38,7 @@
   "devDependencies": {
     "@commitlint/cli": "^17.7.2",
     "@commitlint/config-conventional": "^17.7.0",
+    "@types/lodash": "^4.14.199",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

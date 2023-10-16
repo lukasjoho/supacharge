@@ -10,3 +10,8 @@ export interface Swimlane {
   id: string;
   name: string;
 }
+
+export type Range = {
+  rangeStart: Date;
+  rangeEnd: Date;
+};

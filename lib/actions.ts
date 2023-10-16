@@ -1,7 +1,7 @@
 'use server';
 
 import { Prisma } from '@prisma/client';
-import { revalidatePath } from 'next/cache';
+import ActionResponse from './actionResponse';
 import prisma from './prisma';
 
 export async function getProjects() {
@@ -16,10 +16,13 @@ export async function updateProject(
   id: string,
   data: Prisma.ProjectUpdateInput
 ) {
-  const updatedItem = await prisma.project.update({
-    where: { id },
-    data,
-  });
-  revalidatePath('/team/supacharge/dashboard');
-  return updatedItem;
+  try {
+    const updatedItem = await prisma.project.update({
+      where: { id },
+      data,
+    });
+    return ActionResponse.success('Updated', updatedItem);
+  } catch (error: any) {
+    return ActionResponse.error(error.message || 'Update failed', error);
+  }
 }
