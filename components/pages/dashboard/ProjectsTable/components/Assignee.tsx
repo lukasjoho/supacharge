@@ -1,4 +1,4 @@
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import UserAvatar from '@/components/shared/UserAvatar';
 import { Prisma } from '@prisma/client';
 
 interface AssigneeProps {
@@ -6,13 +6,9 @@ interface AssigneeProps {
 }
 
 const Assignee = ({ assignee }: AssigneeProps) => {
-  const { name, image } = assignee ?? {};
   return (
     <div>
-      <Avatar className="w-7 h-7">
-        <AvatarImage src={image ?? undefined} />
-        <AvatarFallback>{name?.slice(0, 2)}</AvatarFallback>
-      </Avatar>
+      <UserAvatar className="w-7 h-7" user={assignee} />
     </div>
   );
 };

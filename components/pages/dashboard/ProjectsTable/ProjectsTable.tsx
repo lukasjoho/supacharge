@@ -13,7 +13,11 @@ async function getData(): Promise<Payment[]> {
   ];
 }
 
-const ProjectsTable = async () => {
+interface ProjectsTableProps {
+  teamSlug: string;
+}
+
+const ProjectsTable = async ({ teamSlug }: ProjectsTableProps) => {
   const payments = await getData();
   const projects = await prisma.project.findMany({
     include: {
@@ -21,7 +25,7 @@ const ProjectsTable = async () => {
     },
   });
 
-  return <DataTable columns={columns} data={projects} />;
+  return <DataTable columns={columns} data={projects} teamSlug={teamSlug} />;
 };
 
 export default ProjectsTable;

@@ -15,15 +15,18 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
+import { useRouter } from 'next/navigation';
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
+  teamSlug: string;
 }
 
 export function DataTable<TData, TValue>({
   columns,
   data,
+  teamSlug,
 }: DataTableProps<TData, TValue>) {
   const table = useReactTable({
     data,
@@ -31,9 +34,11 @@ export function DataTable<TData, TValue>({
     getCoreRowModel: getCoreRowModel(),
   });
 
+  const router = useRouter();
+
   return (
     <div className="rounded-md border">
-      <Table>
+      <Table className="whitespace-nowrap">
         <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow key={headerGroup.id}>
@@ -58,6 +63,10 @@ export function DataTable<TData, TValue>({
               <TableRow
                 key={row.id}
                 data-state={row.getIsSelected() && 'selected'}
+                onClick={() =>
+                  // @ts-ignore
+                  router.push(`/team/${teamSlug}/project/${row.original.id}`)
+                }
               >
                 {row.getVisibleCells().map((cell) => (
                   <TableCell key={cell.id}>
