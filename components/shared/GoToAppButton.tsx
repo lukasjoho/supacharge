@@ -8,7 +8,6 @@ interface GoToAppButtonProps extends ButtonProps {}
 const GoToAppButton = async ({
   className,
   size = 'default',
-  ...rest
 }: GoToAppButtonProps) => {
   const user = await getAuthUser();
   return (

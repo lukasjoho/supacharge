@@ -1,5 +1,5 @@
 'use client';
-import { useContext, useEffect } from 'react';
+import { useCallback, useContext, useEffect } from 'react';
 import { DesktopModal } from './DesktopModal';
 import MobileModal from './MobileModal';
 import { ModalBackground } from './ModalBackground';
@@ -11,12 +11,15 @@ interface ModalPortalProps {
 }
 export function ModalPortal({ children }: ModalPortalProps) {
   const { windowSize, isMobile, isDesktop } = useWindowSize();
-  const { isOpen, hide } = useContext(ModalContext);
-  function onKeyDown(e: KeyboardEvent) {
-    if (e.key === 'Escape') {
-      hide();
-    }
-  }
+  const { hide } = useContext(ModalContext);
+  const onKeyDown = useCallback(
+    (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        hide();
+      }
+    },
+    [hide]
+  );
 
   useEffect(() => {
     document.addEventListener('keydown', onKeyDown);

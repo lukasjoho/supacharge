@@ -5,11 +5,6 @@ type ActionResponseType = {
   status?: number;
 };
 
-interface ActionResponseArgs {
-  message: string;
-  data?: any;
-}
-
 class ActionResponse {
   success: boolean;
   message: string;

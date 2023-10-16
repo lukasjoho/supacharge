@@ -47,7 +47,7 @@ const formSchema = z.object({
 
 const ProjectModal = ({ project }: ProjectModalProps) => {
   const { hide } = useModal();
-  const { id, name, slug, hypothesis, startDate, endDate } = project ?? {};
+  const { name, slug, hypothesis, startDate, endDate } = project ?? {};
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),

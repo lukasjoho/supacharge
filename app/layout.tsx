@@ -1,3 +1,4 @@
+import QueryProvider from '@/components/providers/QueryProvider';
 import AuthProvider from '@/components/providers/SessionProvider';
 import { ModalProvider } from '@/components/shared/modal';
 import colors from '@/resolveConfig';
@@ -25,36 +26,38 @@ export default function RootLayout({
       <body className={inter.className}>
         <main className="flex min-h-screen flex-col">
           <AuthProvider>
-            <ModalProvider>
-              {children} {modal}
-              <Toaster
-                toastOptions={{
-                  // Define default options
-                  duration: 3000,
-                  success: {
-                    style: {
-                      background: colors.green[500],
-                      color: 'white',
+            <QueryProvider>
+              <ModalProvider>
+                {children} {modal}
+                <Toaster
+                  toastOptions={{
+                    // Define default options
+                    duration: 3000,
+                    success: {
+                      style: {
+                        background: colors.green[500],
+                        color: 'white',
+                      },
+                      iconTheme: {
+                        primary: 'white',
+                        secondary: colors.green[500],
+                      },
                     },
-                    iconTheme: {
-                      primary: 'white',
-                      secondary: colors.green[500],
-                    },
-                  },
-                  error: {
-                    style: {
-                      background: colors.red[500],
-                      color: 'white',
-                    },
+                    error: {
+                      style: {
+                        background: colors.red[500],
+                        color: 'white',
+                      },
 
-                    iconTheme: {
-                      primary: 'white',
-                      secondary: colors.red[500],
+                      iconTheme: {
+                        primary: 'white',
+                        secondary: colors.red[500],
+                      },
                     },
-                  },
-                }}
-              />
-            </ModalProvider>
+                  }}
+                />
+              </ModalProvider>
+            </QueryProvider>
           </AuthProvider>
         </main>
       </body>

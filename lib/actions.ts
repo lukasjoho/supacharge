@@ -18,6 +18,58 @@ export async function getTimelineProjects() {
   });
 }
 
+export async function getCurrentTeam(slug: string) {
+  return await prisma.team.findFirst({
+    where: {
+      slug,
+    },
+  });
+}
+
+export async function updateProjectAssignee(projectId: string, userId: string) {
+  try {
+    const updatedItem = await prisma.project.update({
+      where: { id: projectId },
+      data: {
+        user: {
+          connect: {
+            id: userId,
+          },
+        },
+      },
+    });
+    return ActionResponse.success('Updated assignee', updatedItem);
+  } catch (error: any) {
+    return ActionResponse.error(error.message || 'Update failed', error);
+  }
+}
+
+export async function getUsersByTeam(teamSlug: string) {
+  return await prisma.user.findMany({
+    where: {
+      teams: {
+        some: {
+          slug: teamSlug,
+        },
+      },
+    },
+  });
+}
+
+export async function getTeamsByUser() {
+  const user = await getAuthUser();
+  if (!user) throw new Error('No user found');
+  return await prisma.team.findMany({
+    where: {
+      users: {
+        some: {
+          email: user.email,
+        },
+      },
+    },
+  });
+}
+
 export async function createProject(
   data: Omit<Prisma.ProjectCreateInput, 'team'>
 ) {

@@ -2,7 +2,7 @@ import Container from '@/components/layout/Container';
 import NewProjectButton from '@/components/shared/new/NewProjectButton';
 import AvatarDropdown from './AvatarDropdown';
 import Navbar from './Navbar';
-import { TeamSelector } from './TeamSelector';
+import TeamSelector from './TeamSelector';
 
 const AppDesktopHeader = () => {
   return (

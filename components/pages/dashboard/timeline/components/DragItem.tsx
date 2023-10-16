@@ -14,6 +14,9 @@ interface DragItemProps {
 }
 
 const DragItem = forwardRef<HTMLDivElement, DragItemProps>((props, ref) => {
+  if (props.item.name === 'Personalization Algorithm') {
+    console.log('PA DATA: ', props.item.startDate);
+  }
   const { item, updateItem, range } = props;
   const { id, name } = item;
 
@@ -43,17 +46,14 @@ const DragItem = forwardRef<HTMLDivElement, DragItemProps>((props, ref) => {
   const handleDragEnd = useCallback(async () => {
     let newX = roundToNearestMultiple(mX.get());
     let date = getDateFromPosition(newX, range);
+
     await updateItem(id, {
       //temporary workaround to avoid timezone issues
-      startDate: new Date(date.setHours(12, 0, 0, 0)).toISOString(),
-      endDate: addDays(
-        new Date(date.setHours(12, 0, 0, 0)),
-        daysDuration
-      ).toISOString(),
+      startDate: date,
+      endDate: addDays(date, daysDuration).toISOString(),
     });
     mX.set(newX);
   }, [id, mX, daysDuration, range.rangeStart, name, updateItem]);
-
   return (
     <motion.div
       style={{ left: mX, width: daysDuration * SETTINGS.UNIT_WIDTH }}

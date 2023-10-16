@@ -64,7 +64,7 @@ interface MobileMenuProps {
 }
 
 export const MobileMenu = ({ children }: MobileMenuProps) => {
-  const { isOpen, setIsOpen } = useContext(MobileHeaderContext);
+  const { isOpen } = useContext(MobileHeaderContext);
   return (
     <AnimatePresence>
       {isOpen && (

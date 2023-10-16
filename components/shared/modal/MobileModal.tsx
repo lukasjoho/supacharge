@@ -1,6 +1,6 @@
 'use client';
 import { PanInfo, Variants, motion, useDragControls } from 'framer-motion';
-import React, { useContext, useRef, useState } from 'react';
+import React, { useContext, useRef } from 'react';
 import { ModalContext } from './ModalContext';
 
 interface MobileModalProps {
@@ -9,7 +9,7 @@ interface MobileModalProps {
 }
 
 export function MobileModal({ windowSize, children }: MobileModalProps) {
-  const { show, hide } = useContext(ModalContext);
+  const { hide } = useContext(ModalContext);
   const variants: Variants = {
     hidden: {
       y: '100%',
@@ -18,8 +18,6 @@ export function MobileModal({ windowSize, children }: MobileModalProps) {
       y: 0,
     },
   };
-
-  const constraintsRef = useRef(null);
 
   const ref = useRef<HTMLDivElement>(null);
   async function handleDragEnd(event: any, info: PanInfo) {
@@ -31,30 +29,10 @@ export function MobileModal({ windowSize, children }: MobileModalProps) {
     }
   }
 
-  const [allowDrag, setAllowDrag] = useState(true);
   const dragControls = useDragControls();
-
-  const onDragStart = (event: any, info: any) => {
-    if (!event.target.classList.contains('drag')) {
-      console.log('SHOULD NOT DRAG');
-
-      (dragControls as any).componentControls.forEach((entry: any) => {
-        entry.stop(event, info);
-      });
-    } else {
-      console.log('SHOULD DRAG');
-      dragControls.start(event);
-    }
-  };
 
   return (
     <div>
-      {/* <div
-        className="bg-red-500 w-full h-8 z-10 absolute top-8"
-        onPointerDown={(e: any) => {
-          startDrag(e);
-        }}
-      /> */}
       <motion.div
         ref={ref}
         id="mobile-modal"
@@ -80,7 +58,6 @@ export function MobileModal({ windowSize, children }: MobileModalProps) {
         }}
         dragListener={true}
         dragControls={dragControls}
-        // onPointerDown={onDragStart}
         onDragEnd={handleDragEnd}
         dragElastic={{ top: 0, bottom: 1 }}
         dragConstraints={{ top: 0, bottom: 0 }}

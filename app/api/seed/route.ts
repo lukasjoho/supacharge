@@ -1,9 +1,9 @@
 import prisma from '@/lib/prisma';
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 
 const TEAM_ID = 'clnrf4dzp0000hniqjt0jl2fw';
 
-export async function GET(request: NextRequest) {
+export async function POST() {
   try {
     await prisma.project.deleteMany({
       where: {

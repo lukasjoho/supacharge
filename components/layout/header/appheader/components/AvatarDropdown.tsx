@@ -1,4 +1,4 @@
-import UserAvatar from '@/components/shared/UserAvatar';
+import Avatar from '@/components/shared/Avatar';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -15,7 +15,7 @@ const AvatarDropdown = async () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
-        <UserAvatar user={session?.user} />
+        <Avatar data={session?.user} />
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuItem asChild>

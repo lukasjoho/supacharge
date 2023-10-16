@@ -52,8 +52,8 @@ export const columns: ColumnDef<Project>[] = [
     accessorKey: 'assignee',
     header: 'Assignee',
     cell: ({ row }) => {
-      const { user } = row.original;
-      return <Assignee assignee={user} />;
+      const { user, id } = row.original;
+      return <Assignee assignee={user} projectId={id} />;
     },
   },
 ];
