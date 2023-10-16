@@ -25,6 +25,13 @@ model User {
   currentTeamId String?
 }
 
+enum Decision {
+  REJECT
+  ACCEPT
+  ITERATE
+  NONE
+}
+
 model Project {
   id          String   @id @default(cuid())
   name        String
@@ -39,6 +46,7 @@ model Project {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   status      Boolean @default(false)
+  decision    Decision? @default(NONE)
 }
 
 model Team {
@@ -49,7 +57,6 @@ model Team {
   users       User[]
   projects    Project[]
   currentUsers User[] @relation("CurrentTeamUsers")
-
 }
 
 model Account {

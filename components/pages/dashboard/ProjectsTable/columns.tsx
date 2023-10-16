@@ -3,6 +3,7 @@
 import { ColumnDef } from '@tanstack/react-table';
 import Assignee from './components/Assignee';
 import FormattedDate from './components/Date';
+import Decision from './components/Decision';
 import NameAndSlug from './components/NameAndSlug';
 import Status from './components/Status';
 
@@ -22,6 +23,14 @@ export const columns: ColumnDef<Project>[] = [
     cell: ({ row }) => {
       const { name, slug } = row.original;
       return <NameAndSlug name={name} slug={slug} />;
+    },
+  },
+  {
+    accessorKey: 'decision',
+    header: 'Decision',
+    cell: ({ row }) => {
+      const { decision, id } = row.original;
+      return <Decision decision={decision} projectId={id} />;
     },
   },
   {

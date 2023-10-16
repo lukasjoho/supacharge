@@ -38,9 +38,11 @@ const generateDatePlusDays = (days: number) => {
   return isoString;
 };
 
-const data = [
+const data: any[] = [
   {
     name: 'Personalization Algorithm',
+    slug: 'personalization-algorithm',
+    decision: 'REJECT',
     hypothesis:
       'Compare the effectiveness of two different recommendation algorithms in showing personalized product recommendations to users and driving additional sales.',
     startDate: generateDatePlusDays(-5),
@@ -49,6 +51,8 @@ const data = [
   },
   {
     name: 'Checkout Process Simplification',
+    slug: 'checkout-process-simplification',
+    decision: 'ACCEPT',
     hypothesis:
       'Evaluate a simplified checkout process against the current process to identify if reducing steps and form fields leads to a decrease in cart abandonment rates.',
     startDate: generateDatePlusDays(-25),
@@ -57,6 +61,8 @@ const data = [
   },
   {
     name: 'Social Proof Pop-ups',
+    slug: 'social-proof-pop-ups',
+    decision: 'ITERATE',
     hypothesis:
       'Test the use of real-time notifications showing recent purchases to determine if they enhance the perceived popularity of products and influence purchasing decisions.',
     startDate: generateDatePlusDays(-10),
@@ -65,6 +71,8 @@ const data = [
   },
   {
     name: 'User Reviews Display',
+    slug: 'user-reviews-display',
+    decision: 'NONE',
     hypothesis:
       'Test the impact of showing user reviews prominently on product pages versus placing them in a separate section to see which approach builds more trust and credibility.',
     startDate: generateDatePlusDays(3),
@@ -73,6 +81,8 @@ const data = [
   },
   {
     name: 'Discount Placement',
+    decision: 'NONE',
+    slug: 'discount-placement',
     hypothesis:
       'Compare the performance of displaying discounts on product listings versus displaying them on individual product pages to understand where discounts are more effective.',
     startDate: generateDatePlusDays(-12),
@@ -81,6 +91,8 @@ const data = [
   },
   {
     name: 'Homepage Hero Banner',
+    slug: 'homepage-hero-banner',
+    decision: 'ITERATE',
     hypothesis:
       'Test two different hero banners on the homepage to determine which design and messaging lead to higher click-through rates and engagement.',
     startDate: generateDatePlusDays(-20),
@@ -89,6 +101,8 @@ const data = [
   },
   {
     name: 'Free Shipping Threshold',
+    slug: 'free-shipping-threshold',
+    decision: 'ACCEPT',
     hypothesis:
       'Test the impact of different free shipping thresholds on average order value and overall sales to find the optimal threshold for maximum revenue.',
     startDate: generateDatePlusDays(5),

@@ -1,6 +1,6 @@
 'use server';
 
-import { Prisma } from '@prisma/client';
+import { Decision, Prisma } from '@prisma/client';
 import { revalidatePath } from 'next/cache';
 import ActionResponse from './actionResponse';
 import { getAuthUser } from './auth';
@@ -24,6 +24,23 @@ export async function getCurrentTeam(slug: string) {
       slug,
     },
   });
+}
+
+export async function updateProjectDecision(
+  projectId: string,
+  decision: Decision
+) {
+  try {
+    const updatedItem = await prisma.project.update({
+      where: { id: projectId },
+      data: {
+        decision,
+      },
+    });
+    return ActionResponse.success('Updated decision', updatedItem);
+  } catch (error: any) {
+    return ActionResponse.error(error.message || 'Update failed', error);
+  }
 }
 
 export async function updateProjectAssignee(projectId: string, userId: string) {
