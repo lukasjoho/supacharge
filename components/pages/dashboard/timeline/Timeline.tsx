@@ -1,10 +1,10 @@
-import { getProjects } from '@/lib/actions';
-import DragContainer from './DragContainer';
+import { getTimelineProjects } from '@/lib/actions';
+import DragContainer from './components/DragContainer';
 import ScrollWrapper from './components/ScrollWrapper';
 import { generateRange } from './lib/utils';
 
 const Timeline = async () => {
-  const projects = await getProjects();
+  const projects = await getTimelineProjects();
   let range = generateRange();
   return (
     <>

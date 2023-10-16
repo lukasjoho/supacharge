@@ -5,11 +5,11 @@ import { format } from 'date-fns';
 import { useRouter } from 'next/navigation';
 import { memo, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
-import DateGrid from './components/DateGrid';
-import DragItem from './components/DragItem';
-import TimelineHeader from './components/TimelineHeader';
-import { generateRows } from './lib/generate-rows';
-import { Range } from './lib/types';
+import { generateRows } from '../lib/generate-rows';
+import { Range } from '../lib/types';
+import DateGrid from './DateGrid';
+import DragItem from './DragItem';
+import TimelineHeader from './TimelineHeader';
 
 interface DragContainerProps {
   projects: Prisma.ProjectGetPayload<{}>[];

@@ -1,11 +1,22 @@
-interface ModalFooterProps {
+import { cn } from '@/lib/utils';
+
+interface ModalFooterProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
 }
 
-export function ModalFooter({ children }: ModalFooterProps) {
+export function ModalFooter({ children, ...props }: ModalFooterProps) {
+  const { className, ...rest } = props;
   return (
-    <div className="relative bottom-0 p-4 md:p-6 -mt-4 md:-mt-6 w-full bg-background">
+    <div
+      className={cn(
+        'sticky bottom-0 -mt-4 w-full bg-background p-4 md:-mt-6 md:p-6',
+        className
+      )}
+      {...rest}
+    >
       {children}
     </div>
   );
 }
+
+// -mt-4 md:-mt-6
