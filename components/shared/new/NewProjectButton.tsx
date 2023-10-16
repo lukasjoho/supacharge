@@ -1,8 +1,8 @@
 'use client';
+import ProjectModal from '@/components/pages/dashboard/ProjectModal';
 import { PlusCircle } from 'lucide-react';
 import { Button } from '../../ui/button';
 import { useModal } from '../modal';
-import ProjectModal from './ProjectModal';
 
 const NewProjectButton = () => {
   const { show } = useModal();
