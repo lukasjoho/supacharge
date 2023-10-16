@@ -34,7 +34,7 @@ import toast from 'react-hot-toast';
 import * as z from 'zod';
 
 interface ProjectModalProps {
-  project: Prisma.ProjectGetPayload<{}>;
+  project?: Prisma.ProjectGetPayload<{}>;
 }
 
 const formSchema = z.object({
