@@ -3,7 +3,7 @@ import { User } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 
 interface UserAvatarProps extends AvatarProps {
-  user: {
+  user?: {
     image?: string | null;
     name?: string | null;
   };
