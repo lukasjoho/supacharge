@@ -11,6 +11,14 @@ const ProjectsTable = async ({ teamSlug }: ProjectsTableProps) => {
     include: {
       user: true,
     },
+    orderBy: {
+      name: 'asc',
+    },
+    where: {
+      team: {
+        slug: teamSlug,
+      },
+    },
   });
 
   return <DataTable columns={columns} data={projects} teamSlug={teamSlug} />;

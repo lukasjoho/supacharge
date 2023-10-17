@@ -6,7 +6,7 @@ const DashboardPage = ({ params }: { params: { team: string } }) => {
   return (
     <div className="py-8 md:py-16">
       <Container className="space-y-6 md:space-y-12">
-        <Timeline />
+        <Timeline teamSlug={params.team} />
         <ProjectsTable teamSlug={params.team} />
       </Container>
     </div>

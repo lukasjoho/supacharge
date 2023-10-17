@@ -3,8 +3,12 @@ import DragContainer from './components/DragContainer';
 import ScrollWrapper from './components/ScrollWrapper';
 import { generateRange } from './lib/utils';
 
-const Timeline = async () => {
-  const projects = await getTimelineProjects();
+interface TimelineProps {
+  teamSlug: string;
+}
+
+const Timeline = async ({ teamSlug }: TimelineProps) => {
+  const projects = await getTimelineProjects(teamSlug);
   let range = generateRange();
   return (
     <>

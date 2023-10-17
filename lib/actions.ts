@@ -6,11 +6,14 @@ import ActionResponse from './actionResponse';
 import { getAuthUser } from './auth';
 import prisma from './prisma';
 
-export async function getTimelineProjects() {
+export async function getTimelineProjects(teamSlug: string) {
   //only get projects with start and end dates
   return await prisma.project.findMany({
     where: {
       AND: [{ startDate: { not: null } }, { endDate: { not: null } }],
+      team: {
+        slug: teamSlug,
+      },
     },
     orderBy: {
       id: 'asc',
