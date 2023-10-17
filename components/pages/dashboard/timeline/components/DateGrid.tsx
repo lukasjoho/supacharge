@@ -1,14 +1,16 @@
 import { cn } from '@/lib/utils';
 import { format, isToday } from 'date-fns';
 import SETTINGS from '../lib/constants';
+import { TimelineOptions } from '../lib/options';
 import { Range } from '../lib/types';
 import { generateTimelineData } from '../lib/utils';
 
 interface DateGridProps {
   range: Range;
+  options?: TimelineOptions;
 }
 
-const DateGrid = ({ range }: DateGridProps) => {
+const DateGrid = ({ range, options }: DateGridProps) => {
   const { months, days } = generateTimelineData(range);
   return (
     <div className="absolute top-0 flex h-full ">
@@ -24,7 +26,7 @@ const DateGrid = ({ range }: DateGridProps) => {
                   key={format(day, 'yyyy-MM-dd')}
                   className={cn('text-sm block h-full')}
                   style={{
-                    width: SETTINGS.UNIT_WIDTH,
+                    width: options?.unitWidth || SETTINGS.UNIT_WIDTH,
                   }}
                 >
                   {isToday(day) && (

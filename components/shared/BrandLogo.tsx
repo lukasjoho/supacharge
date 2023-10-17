@@ -5,8 +5,7 @@ const BrandLogo = () => {
   return (
     <Link href="/">
       <div className="flex gap-2 items-center">
-        <Icons.logoBase className="w-8 h-8" />
-        <span>Supacharge</span>
+        <Icons.logoText className="h-7" />
       </div>
     </Link>
   );

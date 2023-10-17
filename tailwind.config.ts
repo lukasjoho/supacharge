@@ -53,6 +53,30 @@ const config: Config = {
           foreground: 'hsl(var(--card-foreground))',
         },
       },
+      fontFamily: {
+        gaegu: ['var(--font-gaegu)'],
+      },
+      fontSize: {
+        '2xs': ['0.625rem', '1rem'],
+        '10xl': [
+          '10rem',
+          {
+            lineHeight: '1',
+          },
+        ],
+        '11xl': [
+          '12rem',
+          {
+            lineHeight: '1',
+          },
+        ],
+        '12xl': [
+          '14rem',
+          {
+            lineHeight: '1',
+          },
+        ],
+      },
       borderRadius: {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',

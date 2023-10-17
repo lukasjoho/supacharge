@@ -1,23 +1,19 @@
-import {
-  addDays,
-  addMonths,
-  addYears,
-  eachDayOfInterval,
-  subDays,
-} from 'date-fns';
+import { addDays, addMonths, eachDayOfInterval } from 'date-fns';
 import SETTINGS from './constants';
 import { Range } from './types';
 
-export function roundToNearestMultiple(currentPos: number) {
-  const nearestMultiple =
-    Math.round(currentPos / SETTINGS.UNIT_WIDTH) * SETTINGS.UNIT_WIDTH;
+export function roundToNearestMultiple(
+  currentPos: number,
+  unitWidth: number = SETTINGS.UNIT_WIDTH
+) {
+  const nearestMultiple = Math.round(currentPos / unitWidth) * unitWidth;
   return nearestMultiple;
 }
 
-export function generateRange() {
+export function generateRange(rangeStart: Date, rangeEnd: Date) {
   return {
-    rangeStart: subDays(new Date(), 60),
-    rangeEnd: addYears(new Date(), 1),
+    rangeStart: rangeStart,
+    rangeEnd: rangeEnd,
   };
 }
 
@@ -36,8 +32,12 @@ export function generateTimelineData(range: Range) {
   return { months, days };
 }
 
-export function getDateFromPosition(position: number, range: Range) {
-  const days = position / SETTINGS.UNIT_WIDTH;
+export function getDateFromPosition(
+  position: number,
+  range: Range,
+  unitWidth: number = SETTINGS.UNIT_WIDTH
+) {
+  const days = position / unitWidth;
   const date = range.rangeStart;
   return addDays(date, days);
 }

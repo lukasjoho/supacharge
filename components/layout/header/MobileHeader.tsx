@@ -24,10 +24,7 @@ const MobileHeader: FC<MobileHeaderProps> = ({ children, ...props }) => {
   const { className, ...rest } = props;
   return (
     <MobileHeaderContext.Provider value={{ isOpen, setIsOpen }}>
-      <div
-        {...rest}
-        className={cn('fixed top-0 z-40 w-full bg-background', className)}
-      >
+      <div {...rest} className={cn('z-40 w-full bg-background', className)}>
         {children}
       </div>
     </MobileHeaderContext.Provider>
