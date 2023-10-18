@@ -66,20 +66,20 @@ const WalkthroughItem: FC<WalkthroughItemProps> = ({
               <div className="space-y-2">
                 <p
                   className={cn(
-                    'font-bold text-xl bg-gradient-to-t bg-clip-text text-transparent',
+                    'font-bold text-lg bg-gradient-to-t bg-clip-text text-transparent',
                     color
                   )}
                 >
                   {label}
                 </p>
-                <Title>{title}</Title>
+                <Title className="text-2xl">{title}</Title>
               </div>
               <div className="md:hidden">
                 <ItemImage imageUrl={imageUrl} />
               </div>
               <p>{description}</p>
             </div>
-            <div className="grid grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {item.highlights?.map((highlight: any, index) => (
                 <div className="flex gap-2 items-center" key={index}>
                   <div className={`text-${solidColor}`}>{highlight.icon}</div>

@@ -53,9 +53,11 @@ const Playground = () => {
               <VariantSelector />
             </GridItem>
             <div className="absolute left-0 top-0 flex flex-row lg:flex-col items-center gap-4 -translate-x-3 lg:-translate-x-[150%] -translate-y-[160%] lg:-translate-y-[50%] text-muted-foreground">
-              <p className="font-gaegu text-xl lg:text-2xl">Play around</p>
-              <Icons.curvedArrowConvex className="w-12 fill-muted-foreground hidden lg:block" />
-              <Icons.curvedArrowConcave className="w-12 fill-muted-foreground lg:hidden translate-y-1" />
+              <p className="font-gaegu text-xl lg:text-2xl text-pink-500">
+                Play around
+              </p>
+              <Icons.curvedArrowConvex className="w-12 fill-pink-500/90 hidden lg:block" />
+              <Icons.curvedArrowConcave className="w-12 fill-pink-500/90 lg:hidden translate-y-1" />
             </div>
           </div>
         </div>

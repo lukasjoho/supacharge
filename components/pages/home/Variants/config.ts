@@ -17,25 +17,25 @@ export const variants: Variant[] = [
   {
     id: 'a',
     word: 'relentlessly',
-    color: colors['fuchsia'][500],
+    color: colors['green'][500],
     metric: 0.52,
   },
   {
     id: 'b',
     word: 'transparently',
-    color: colors['purple'][500],
+    color: colors['teal'][500],
     metric: 0.64,
   },
   {
     id: 'c',
     word: 'analytically',
-    color: colors['indigo'][500],
+    color: colors['sky'][500],
     metric: 0.43,
   },
   {
     id: 'd',
     word: 'collaboratively',
-    color: colors['pink'][500],
+    color: colors['indigo'][500],
     metric: 0.23,
   },
 ];

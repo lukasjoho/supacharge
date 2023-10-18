@@ -1,4 +1,3 @@
-import Circle from '@/components/pages/home/Circle';
 import GetStarted from '@/components/pages/home/GetStarted';
 import Hero from '@/components/pages/home/Hero';
 import Playground from '@/components/pages/home/Playground';
@@ -14,7 +13,6 @@ const HomePage = async () => {
         <Playground />
       </VariantsProvider>
       <Walkthrough />
-      <Circle />
       <Testimonial />
       <GetStarted />
     </div>

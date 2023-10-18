@@ -1,7 +1,7 @@
 import Container from '@/components/layout/Container';
+import GoToAppButton from '@/components/shared/GoToAppButton';
 import { Icons } from '@/components/shared/Icons';
 import Title from '@/components/shared/Title';
-import { Button } from '@/components/ui/button';
 
 const GetStarted = () => {
   return (
@@ -14,7 +14,7 @@ const GetStarted = () => {
             Unleash the power <br />
             of experimentation now.
           </Title>
-          <Button>Get Started</Button>
+          <GoToAppButton />
         </div>
       </Container>
     </section>
