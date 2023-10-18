@@ -18,7 +18,7 @@ const GoToAppButton = async ({
         className
       )}
     >
-      {user ? 'Go to app' : 'Log in'}
+      {user ? 'Go to app' : 'Get Started'}
     </Link>
   );
 };
