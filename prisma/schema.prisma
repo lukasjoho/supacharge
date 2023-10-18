@@ -14,13 +14,13 @@ datasource db {
 model User {
   id            String    @id @default(cuid())
   name          String?
-  email         String?   @unique
+  email         String    @unique
   emailVerified DateTime?
   image         String?
   accounts      Account[]
   sessions      Session[]
   projects      Project[]
-  teams         Team[]
+  teams         Team[] 
   currentTeam   Team?     @relation("CurrentTeamUsers", fields: [currentTeamId], references: [id])
   currentTeamId String?
 }
