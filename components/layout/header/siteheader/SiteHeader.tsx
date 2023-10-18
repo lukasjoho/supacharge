@@ -7,7 +7,7 @@ const SiteHeader = () => {
       <div className="hidden md:block">
         <SiteDesktopHeader />
       </div>
-      <div className="md:hidden">
+      <div className="md:hidden relative z-40">
         <SiteMobileHeader />
       </div>
     </>

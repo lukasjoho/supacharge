@@ -16,13 +16,13 @@ const SiteMobileHeader = () => {
       </MobileNavbar>
       <MobileMenu>
         <nav className="pb-3">
-          <ul>
+          <ul className="pb-4">
             {SITE_NAV_ITEMS.map((item) => {
               return (
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-3xl block font-semibold text-center py-8"
+                    className="text-3xl block font-semibold text-left py-3 text-muted-foreground transition duration-100 hover:text-primary"
                   >
                     {item.label}
                   </Link>
