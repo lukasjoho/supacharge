@@ -17,7 +17,7 @@ export const variants: Variant[] = [
   {
     id: 'a',
     word: 'relentlessly',
-    color: colors['violet'][500],
+    color: colors['fuchsia'][500],
     metric: 0.52,
   },
   {
@@ -29,7 +29,7 @@ export const variants: Variant[] = [
   {
     id: 'c',
     word: 'analytically',
-    color: colors['fuchsia'][500],
+    color: colors['indigo'][500],
     metric: 0.43,
   },
   {
