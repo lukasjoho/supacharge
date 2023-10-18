@@ -1,3 +1,4 @@
+import Footer from '@/components/layout/Footer';
 import Siteheader from '@/components/layout/header/siteheader';
 
 interface SiteLayoutProps {
@@ -9,6 +10,7 @@ const SiteLayout = ({ children }: SiteLayoutProps) => {
     <>
       <Siteheader />
       {children}
+      <Footer />
     </>
   );
 };

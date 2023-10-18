@@ -7,7 +7,7 @@ import { VariantsProvider } from '@/components/pages/home/Variants/VariantsConte
 
 const HomePage = async () => {
   return (
-    <div className="py-12 md:py-16 space-y-24 md:space-y-32 overflow-hidden">
+    <div className="pt-12 md:pt-16 pb-32 md:pb-48 space-y-24 md:space-y-32 overflow-hidden">
       <VariantsProvider>
         <Hero />
         <Playground />
