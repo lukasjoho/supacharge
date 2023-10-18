@@ -29,6 +29,25 @@ export async function getCurrentTeam(slug: string) {
   });
 }
 
+export async function assignCurrentTeam(teamSlug: string) {
+  const user = await getAuthUser();
+  console.log('SERVER IFRED');
+
+  if (!user) return;
+  await prisma.user.update({
+    where: {
+      email: user.email as undefined | string,
+    },
+    data: {
+      currentTeam: {
+        connect: {
+          slug: teamSlug,
+        },
+      },
+    },
+  });
+}
+
 export async function updateProjectDecision(
   projectId: string,
   decision: Decision
@@ -83,7 +102,7 @@ export async function getTeamsByUser() {
     where: {
       users: {
         some: {
-          email: user.email,
+          email: user.email as undefined | string,
         },
       },
     },
