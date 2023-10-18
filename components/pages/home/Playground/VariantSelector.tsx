@@ -43,8 +43,8 @@ const VariantSelector = ({ name }: any) => {
         (t) => (
           <ToastDialog
             id={t.id}
-            title="You adjusted traffic allocation! 🔒"
-            message="With Supacharge you decide how you want to split your traffic and roll out experiments using feature flags."
+            title="You adjusted variants! 🚥"
+            message="With Supacharge you decide how you want to split your traffic and roll out experiments using variants."
           />
         ),
         {
@@ -99,6 +99,9 @@ const VariantSelector = ({ name }: any) => {
           layoutId={`button`}
           onClick={handleAdd}
           className="group w-full aspect-square border rounded-lg bg-neutral-500/10 border-neutral-500 grid place-items-center"
+          whileTap={{
+            scale: 0.95,
+          }}
         >
           <PlusCircle className="transition duration-100 text-neutral-100 opacity-70 group-hover:opacity-100" />
         </motion.button>

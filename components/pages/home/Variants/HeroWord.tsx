@@ -4,13 +4,16 @@ import { cn } from '@/lib/utils';
 import { useVariants } from './VariantsContext';
 import { variants } from './config';
 
-const HeroWord = () => {
+interface HeroWordProps extends React.HTMLAttributes<HTMLDivElement> {}
+
+const HeroWord = (props: HeroWordProps) => {
   const { activeVariantId } = useVariants();
   let activeVariant = variants.find((v) => v.id === activeVariantId);
+  const { className, ...rest } = props;
   return (
-    <span className={cn()} style={{ color: activeVariant?.color }}>
+    <div className={cn(className)} style={{ color: activeVariant?.color }}>
       {activeVariant?.word}
-    </span>
+    </div>
   );
 };
 

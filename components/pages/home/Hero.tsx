@@ -15,10 +15,11 @@ const Hero = () => {
             as="h1"
             className="text-5xl md:text-6xl xl:text-8xl text-center order-first md:order-last"
           >
-            Experiment <br /> <HeroWord />
+            <div className="animation-fade-in">Experiment</div>
+            <HeroWord className="animation-fade-in animation-delay-100" />
           </Title>
         </div>
-        <p className="text-base md:text-lg text-muted-foreground sm:text-xl text-center px-4 max-w-[900px]">
+        <p className="text-base md:text-lg text-muted-foreground sm:text-xl text-center px-4 max-w-[900px] animation-fade-in animation-delay-200">
           Uplift is an experimentation platform for modern product and
           engineering teams streamlining the management and deployment of your
           experiments. Accelerate your growth by bringing experiment visibility,
