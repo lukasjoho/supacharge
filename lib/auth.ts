@@ -19,6 +19,9 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
   callbacks: {
+    async signIn({ user, account, profile, email, credentials }: any) {
+      return true;
+    },
     async session({ token, session }: any) {
       if (token) {
         session.user.id = token.id;
@@ -33,7 +36,8 @@ export const authOptions: NextAuthOptions = {
     },
 
     async jwt({ token, user }: any) {
-      const dbUser = await prisma.user.findFirst({
+      let dbUser;
+      dbUser = await prisma.user.findFirst({
         where: {
           email: token.email,
         },
@@ -54,10 +58,49 @@ export const authOptions: NextAuthOptions = {
           },
         },
       });
+
       if (!dbUser) {
         token.id = user!.id;
         return token;
       }
+
+      const hasNoTeams = dbUser?.teams.length === 0;
+      if (hasNoTeams) {
+        dbUser = await prisma.user.update({
+          where: {
+            email: token.email,
+          },
+          data: {
+            teams: {
+              connect: {
+                id: 'clnrf4dzp0000hniqjt0jl2fw',
+              },
+            },
+            currentTeam: {
+              connect: {
+                id: 'clnrf4dzp0000hniqjt0jl2fw',
+              },
+            },
+          },
+          include: {
+            teams: {
+              select: {
+                id: true,
+                slug: true,
+                name: true,
+              },
+            },
+            currentTeam: {
+              select: {
+                id: true,
+                slug: true,
+                name: true,
+              },
+            },
+          },
+        });
+      }
+
       return {
         id: dbUser.id,
         name: dbUser.name,
@@ -65,9 +108,6 @@ export const authOptions: NextAuthOptions = {
         image: dbUser.image,
         teams: dbUser.teams,
         currentTeam: dbUser.currentTeam,
-        // spaces: dbUser.spaces,
-        // currentSpace: dbUser.currentSpace,
-        // hasCompletedSignUp: dbUser.hasCompletedSignUp,
       };
     },
     redirect() {
