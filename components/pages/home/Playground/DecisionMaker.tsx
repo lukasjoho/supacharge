@@ -68,7 +68,7 @@ const Decision = ({ decision }: DecisionProps) => {
             <CommandGroup>
               {decisions?.map((decision) => (
                 <CommandItem
-                  className="cursor-pointer"
+                  className="ccursor-click"
                   key={decision}
                   onSelect={async () => {
                     setValue(decision);
@@ -122,7 +122,7 @@ const DecisionBadge = ({ decision }: DecisionBadgeProps) => {
     >
       <Badge
         className={cn(
-          'cursor-pointer text-foreground text-base px-4 py-1',
+          'ccursor-click text-foreground text-base px-4 py-1',
           decision === 'NONE' &&
             'px-4 border-neutral-400/40 bg-neutral-400/5 hover:bg-neutral-400/10',
           decision === 'REJECT' &&

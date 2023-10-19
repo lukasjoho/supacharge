@@ -80,7 +80,7 @@ const Draggable = ({ project, range, options }: any) => {
       className={cn(
         'text-xs whitespace-nowrap flex items-center border rounded-lg px-3 absolute h-full font-medium overflow-hidden text-ellipsis',
         itemColor,
-        project.type === 'real' && 'cursor-move'
+        project.type === 'real' && 'ccursor-move'
       )}
       drag="x"
       onDrag={handleDrag}

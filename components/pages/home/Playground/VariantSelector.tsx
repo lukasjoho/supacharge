@@ -98,7 +98,7 @@ const VariantSelector = ({ name }: any) => {
           key={'button'}
           layoutId={`button`}
           onClick={handleAdd}
-          className="group w-full aspect-square border rounded-lg bg-neutral-500/10 border-neutral-500 grid place-items-center"
+          className="ccursor-click group w-full aspect-square border rounded-lg bg-neutral-500/10 border-neutral-500 grid place-items-center"
           whileTap={{
             scale: 0.95,
           }}
@@ -127,7 +127,7 @@ const VariantTag = ({
 }: VariantTagProps) => {
   const { id, weight } = variant;
   return (
-    <div className="relative w-full cursor-default">
+    <div className="relative w-full">
       <div
         className="aspect-square text-lg font-medium text-center grid place-items-center border rounded-lg w-full"
         style={{
@@ -143,7 +143,7 @@ const VariantTag = ({
       </div>
       {isLast && idx != 0 && (
         <div
-          className="aspect-square rounded-full absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 w-6 grid place-items-center cursor-pointer z-10 text-sm border bg-foreground"
+          className="ccursor-click aspect-square rounded-full absolute top-0 right-0 translate-x-1/2 -translate-y-1/2 w-6 grid place-items-center cursor-pointer z-10 text-sm border bg-foreground"
           onClick={() => handleRemove()}
         >
           <X className="w-4 h-4 text-background" />

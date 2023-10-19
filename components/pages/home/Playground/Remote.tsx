@@ -35,7 +35,6 @@ const Remote = () => {
 
   return (
     <div className="grow grid place-items-center">
-      {/* <pre>{JSON.stringify(experiment, null, 2)}</pre> */}
       <div className="-translate-y-4 scale-[200%]">
         <motion.div
           whileTap={{
@@ -43,6 +42,7 @@ const Remote = () => {
           }}
         >
           <Switch
+            className="ccursor-click"
             checked={experiment.isEnabled}
             onCheckedChange={handleChange}
           />

@@ -37,7 +37,7 @@ const PlayAroundLabel = ({ className, ...props }: InteractiveLabelProps) => (
 const Playground = () => {
   return (
     <ScrollAnimationWrapper>
-      <Container className="max-w-[900px] 2xl:max-w-[1000px] relative">
+      <Container className="max-w-[900px] 2xl:max-w-[1000px] relative ccursor-triangle">
         <div className="absolute right-0 z-10 bg-gradient-to-r from-transparent to-background w-24 h-full"></div>
         <InteractiveLabel className="md:hidden absolute right-5 top-12 -translate-y-[100%] z-10" />
         <PlayAroundLabel className="md:hidden absolute left-3 top-12 -translate-y-[150%] z-10" />
@@ -53,7 +53,7 @@ const Playground = () => {
               <MiniTimeline />
             </GridItem>
             <GridItem
-              className="row-start-1 col-start-4 md:col-start-3 col-span-2 md:col-span-1 row-span-2"
+              className="row-start-1 col-start-4 md:col-start-3 col-span-2 md:col-span-1 row-span-2 ccursor-click"
               title="Expose flags"
             >
               <Flags />
@@ -71,7 +71,7 @@ const Playground = () => {
               <Remote />
             </GridItem>
             <GridItem
-              className="col-span-1 row-span-1 col-start-3 md:col-start-2 row-start-1 md:row-start-2 md:aspect-square"
+              className="col-span-1 row-span-1 col-start-3 md:col-start-2 row-start-1 md:row-start-2 md:aspect-square ccursor-click"
               title="Analyse results"
             >
               <BarChart />

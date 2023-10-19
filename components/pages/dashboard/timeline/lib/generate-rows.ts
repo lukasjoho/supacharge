@@ -1,5 +1,5 @@
 import { Prisma } from '@prisma/client';
-import { areIntervalsOverlapping } from 'date-fns';
+import { areIntervalsOverlapping, startOfDay } from 'date-fns';
 
 export function generateRows(items: Prisma.ProjectGetPayload<{}>[]) {
   const rows: Prisma.ProjectGetPayload<{}>[][] = [];
@@ -13,10 +13,10 @@ export function generateRows(items: Prisma.ProjectGetPayload<{}>[]) {
     rows.forEach((row: Prisma.ProjectGetPayload<{}>[]) => {
       // Check if the item overlaps with any item in the current row
       const overlap = row.some((rowItem) => {
-        const startDate1 = new Date(rowItem.startDate!);
-        const endDate1 = new Date(rowItem.endDate!);
-        const startDate2 = new Date(item.startDate!);
-        const endDate2 = new Date(item.endDate!);
+        const startDate1 = startOfDay(new Date(rowItem.startDate!));
+        const endDate1 = startOfDay(new Date(rowItem.endDate!));
+        const startDate2 = startOfDay(new Date(item.startDate!));
+        const endDate2 = startOfDay(new Date(item.endDate!));
 
         // Check for overlapping conditions on a day level
         const dayOverlap = areIntervalsOverlapping(

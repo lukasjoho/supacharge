@@ -12,7 +12,7 @@ const GridItem = ({ children, title, ...props }: GridItemProps) => {
   return (
     <div
       className={cn(
-        'border rounded-lg relative flex flex-col transition duration-200 hover:bg-muted/30 cursor-pointer',
+        'border rounded-lg relative flex flex-col transition duration-200 hover:bg-muted/30',
         className
       )}
       {...rest}

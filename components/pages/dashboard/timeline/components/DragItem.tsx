@@ -1,6 +1,11 @@
 import { cn } from '@/lib/utils';
 import { Prisma } from '@prisma/client';
-import { addDays, differenceInDays, isWithinInterval } from 'date-fns';
+import {
+  addDays,
+  differenceInDays,
+  isWithinInterval,
+  startOfDay,
+} from 'date-fns';
 import { motion, useMotionValue } from 'framer-motion';
 import { forwardRef, memo, useCallback } from 'react';
 import SETTINGS from '../lib/constants';
@@ -28,7 +33,10 @@ const DragItem = forwardRef<HTMLDivElement, DragItemProps>((props, ref) => {
     }
   );
 
-  let daysStart = differenceInDays(new Date(item.startDate!), range.rangeStart);
+  let daysStart = differenceInDays(
+    startOfDay(new Date(item.startDate!)),
+    startOfDay(range.rangeStart)
+  );
   let daysDuration = differenceInDays(
     new Date(item.endDate!),
     new Date(item.startDate!)
