@@ -81,7 +81,7 @@ export const items = [
     description:
       'An experiment is only as good as the actions taken based on the results. Uplift supports in making and documenting the right decisions based on the results of your experiments.',
     cta: 'Start Deciding',
-    imageUrl: '/background.jpg',
+    imageUrl: '/image-4.jpg',
     color: 'from-green-600 to-green-400',
     solidColor: 'green-500',
     textColor: 'text-green-500',
