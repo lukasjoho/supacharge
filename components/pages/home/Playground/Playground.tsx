@@ -38,7 +38,7 @@ const Playground = () => {
   return (
     <ScrollAnimationWrapper>
       <Container className="max-w-[900px] 2xl:max-w-[1000px] relative ccursor-triangle">
-        <div className="absolute right-0 z-10 bg-gradient-to-r from-transparent to-background w-24 h-full"></div>
+        <div className="absolute right-0 z-10 bg-gradient-to-r from-transparent to-background w-24 h-full pointer-events-none"></div>
         <InteractiveLabel className="md:hidden absolute right-5 top-12 -translate-y-[100%] z-10" />
         <PlayAroundLabel className="md:hidden absolute left-3 top-12 -translate-y-[150%] z-10" />
         <div className="overflow-scroll md:overflow-visible -mx-3 px-6 py-12 -my-12 md:my-0 md:px-0 md:py-0 md:mx-0">
