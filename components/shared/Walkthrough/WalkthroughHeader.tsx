@@ -4,7 +4,7 @@ import Title from '../Title';
 const WalkthroughHeader = () => {
   return (
     <Container>
-      <Title className="text-3xl md:text-6xl">
+      <Title className="text-4xl md:text-6xl">
         Your end-to-end <br />
         experiment companion
       </Title>

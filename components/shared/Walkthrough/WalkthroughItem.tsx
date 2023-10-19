@@ -72,7 +72,7 @@ const WalkthroughItem: FC<WalkthroughItemProps> = ({
                 >
                   {label}
                 </p>
-                <Title className="text-2xl">{title}</Title>
+                <Title className="text-3xlxl md:text-4xl">{title}</Title>
               </div>
               <div className="md:hidden">
                 <ItemImage imageUrl={imageUrl} />

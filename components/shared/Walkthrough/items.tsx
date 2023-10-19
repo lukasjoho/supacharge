@@ -28,7 +28,7 @@ export const items = [
     description:
       'Coming up with a testable hypothesis sits at the very start of every experiment. Uplift supports in creating scientific hypothesis.',
     cta: 'Start Planning',
-    imageUrl: '/background.jpg',
+    imageUrl: '/image-plan.jpg',
     color: 'from-purple-600 to-purple-400',
     solidColor: 'purple-500',
     textColor: 'text-purple-500',
@@ -46,7 +46,7 @@ export const items = [
     description:
       'Each experiment mappes one to one to a feature flag. This lets any client applications consume configurations in predictable and reliable ways.',
     cta: 'Start Deploying',
-    imageUrl: '/background.jpg',
+    imageUrl: '/image-api.jpg',
     color: 'from-amber-600 to-amber-400',
     solidColor: 'amber-500',
     textColor: 'text-amber-500',
@@ -64,7 +64,7 @@ export const items = [
     description:
       'Your metrics are integrated into each and every experiment created. Either use the Supacharge analytics SDK or integrate your analytics tool of choice',
     cta: 'Start Analyzing',
-    imageUrl: '/background.jpg',
+    imageUrl: '/image-analytics.jpg',
     color: 'from-blue-600 to-blue-400',
     solidColor: 'blue-500',
     textColor: 'text-blue-500',

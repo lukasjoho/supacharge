@@ -4,6 +4,14 @@ const nextConfig = {
     serverActions: true,
   },
   reactStrictMode: false,
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'uplift-images.s3.amazonaws.com',
+      },
+    ],
+  },
 };
 
 module.exports = nextConfig;

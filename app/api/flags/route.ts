@@ -6,6 +6,9 @@ export async function GET() {
     select: {
       startDate: true,
       endDate: true,
+      id: true,
+      name: true,
+      status: true,
     },
   });
   return NextResponse.json(experiments);

@@ -34,9 +34,10 @@ const ToasterProvider = ({ children }: { children: React.ReactNode }) => {
           },
           success: {
             style: {
-              background: `${colors.green[600]}75`,
+              backgroundColor: `${colors.green[600]}90`,
               border: `1px solid ${colors.green[600]}`,
               color: 'white',
+              backdropFilter: 'blur(20px)',
             },
             iconTheme: {
               primary: 'white',
@@ -46,8 +47,9 @@ const ToasterProvider = ({ children }: { children: React.ReactNode }) => {
 
           error: {
             style: {
-              background: colors.red[600],
+              backgroundColor: `${colors.red[600]}90`,
               color: 'white',
+              backdropFilter: 'blur(20px)',
             },
 
             iconTheme: {

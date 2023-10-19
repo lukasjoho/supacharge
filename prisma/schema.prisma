@@ -47,6 +47,9 @@ model Project {
   updatedAt   DateTime @updatedAt
   status      Boolean @default(false)
   decision    Decision? @default(NONE)
+  imageUrl    String?
+  improvement Decimal?
+  statSig     Decimal?
 }
 
 model Team {

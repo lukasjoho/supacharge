@@ -1,3 +1,4 @@
+import FileInput from '@/components/shared/ImageUpload/FileInput';
 import {
   Modal,
   ModalContent,
@@ -27,7 +28,7 @@ import { createProject } from '@/lib/actions';
 import { cn, formatDate, slugify } from '@/lib/utils';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Prisma } from '@prisma/client';
-import { CalendarClock } from 'lucide-react';
+import { CalendarClock, Sparkles } from 'lucide-react';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
@@ -43,11 +44,13 @@ const formSchema = z.object({
   hypothesis: z.string().optional(),
   startDate: z.string(),
   endDate: z.string(),
+  imageUrl: z.string().optional(),
 });
 
 const ProjectModal = ({ project }: ProjectModalProps) => {
   const { hide } = useModal();
-  const { name, slug, hypothesis, startDate, endDate } = project ?? {};
+  const { name, slug, hypothesis, startDate, endDate, imageUrl } =
+    project ?? {};
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -57,6 +60,7 @@ const ProjectModal = ({ project }: ProjectModalProps) => {
       hypothesis: hypothesis ?? undefined,
       startDate: startDate?.toISOString() || new Date().toISOString(),
       endDate: endDate?.toISOString() ?? '',
+      imageUrl: imageUrl ?? undefined,
     },
   });
   const watchedValue = form.watch('name');
@@ -108,138 +112,164 @@ const ProjectModal = ({ project }: ProjectModalProps) => {
           <ModalTitle>Title</ModalTitle>
         </ModalHeader>
         <ModalContent>
-          <div className="grid grid-cols-2 gap-8">
+          <div className="space-y-8">
+            <div className="grid grid-cols-2 gap-8">
+              <FormField
+                control={form.control}
+                name="name"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Name</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Enter name..." {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="slug"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Identifier</FormLabel>
+                    <FormControl>
+                      <Input placeholder="..." {...field} disabled />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="hypothesis"
+                render={({ field }) => (
+                  <FormItem className="col-span-2">
+                    <div className="flex justify-between items-center">
+                      <FormLabel>Hypothesis</FormLabel>
+                      <Button
+                        size="xs"
+                        type="button"
+                        className="flex gap-1 bg-transparent bg-gradient-to-t from-violet-700/50 to-violet-600/50 border border-violet-400 text-primary"
+                      >
+                        <Sparkles className="h-3 w-3" /> AI Refine
+                      </Button>
+                    </div>
+                    <FormControl>
+                      <Textarea placeholder="Enter hypothesis...." {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="startDate"
+                render={({ field }) => (
+                  <FormItem className="flex flex-col grow shrink-0">
+                    <FormLabel>Start Date</FormLabel>
+                    <Popover>
+                      <PopoverTrigger asChild>
+                        <FormControl>
+                          <Button
+                            variant={'outline'}
+                            className={cn(
+                              'w-full pl-3 text-left font-normal',
+                              !field.value && 'text-muted-foreground'
+                            )}
+                          >
+                            {field.value ? (
+                              formatDate(field.value)
+                            ) : (
+                              <span>Pick a date</span>
+                            )}
+                            <CalendarClock className="ml-auto h-4 w-4 opacity-50" />
+                          </Button>
+                        </FormControl>
+                      </PopoverTrigger>
+                      <PopoverContent className="w-auto p-0" align="start">
+                        <Calendar
+                          mode="single"
+                          selected={new Date(field.value)}
+                          onSelect={(date) => {
+                            const dateString = date?.toISOString();
+                            field.onChange(dateString);
+                          }}
+                          disabled={(date) => {
+                            return (
+                              date < new Date(watchedStartDate) ||
+                              date < new Date('1900-01-01')
+                            );
+                          }}
+                          initialFocus
+                        />
+                      </PopoverContent>
+                    </Popover>
+
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="endDate"
+                render={({ field }) => (
+                  <FormItem className="flex flex-col grow shrink-0">
+                    <FormLabel>End Date</FormLabel>
+                    <Popover>
+                      <PopoverTrigger asChild>
+                        <FormControl>
+                          <Button
+                            variant={'outline'}
+                            className={cn(
+                              'w-full pl-3 text-left font-normal',
+                              !field.value && 'text-muted-foreground'
+                            )}
+                          >
+                            {field.value ? (
+                              formatDate(field.value)
+                            ) : (
+                              <span>Pick a date</span>
+                            )}
+                            <CalendarClock className="ml-auto h-4 w-4 opacity-50" />
+                          </Button>
+                        </FormControl>
+                      </PopoverTrigger>
+                      <PopoverContent className="w-auto p-0" align="start">
+                        <Calendar
+                          mode="single"
+                          selected={new Date(field.value)}
+                          onSelect={(date) => {
+                            const dateString = date?.toISOString();
+                            field.onChange(dateString);
+                          }}
+                          disabled={(date) => {
+                            return (
+                              date < new Date(watchedStartDate) ||
+                              date < new Date('1900-01-01')
+                            );
+                          }}
+                          initialFocus
+                        />
+                      </PopoverContent>
+                    </Popover>
+
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
             <FormField
               control={form.control}
-              name="name"
+              name="imageUrl"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Name</FormLabel>
+                  <div className="flex items-center justify-between">
+                    <FormLabel>Image</FormLabel>
+                  </div>
                   <FormControl>
-                    <Input placeholder="Enter name..." {...field} />
+                    <FileInput setValue={form.setValue} value={field.value} />
                   </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="slug"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Identifier</FormLabel>
-                  <FormControl>
-                    <Input placeholder="..." {...field} disabled />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="hypothesis"
-              render={({ field }) => (
-                <FormItem className="col-span-2">
-                  <FormLabel>Hypothesis</FormLabel>
-                  <FormControl>
-                    <Textarea placeholder="Enter hypothesis...." {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="startDate"
-              render={({ field }) => (
-                <FormItem className="flex flex-col grow shrink-0">
-                  <FormLabel>Start Date</FormLabel>
-                  <Popover>
-                    <PopoverTrigger asChild>
-                      <FormControl>
-                        <Button
-                          variant={'outline'}
-                          className={cn(
-                            'w-full pl-3 text-left font-normal',
-                            !field.value && 'text-muted-foreground'
-                          )}
-                        >
-                          {field.value ? (
-                            formatDate(field.value)
-                          ) : (
-                            <span>Pick a date</span>
-                          )}
-                          <CalendarClock className="ml-auto h-4 w-4 opacity-50" />
-                        </Button>
-                      </FormControl>
-                    </PopoverTrigger>
-                    <PopoverContent className="w-auto p-0" align="start">
-                      <Calendar
-                        mode="single"
-                        selected={new Date(field.value)}
-                        onSelect={(date) => {
-                          const dateString = date?.toISOString();
-                          field.onChange(dateString);
-                        }}
-                        disabled={(date) => {
-                          return (
-                            date < new Date(watchedStartDate) ||
-                            date < new Date('1900-01-01')
-                          );
-                        }}
-                        initialFocus
-                      />
-                    </PopoverContent>
-                  </Popover>
-
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="endDate"
-              render={({ field }) => (
-                <FormItem className="flex flex-col grow shrink-0">
-                  <FormLabel>End Date</FormLabel>
-                  <Popover>
-                    <PopoverTrigger asChild>
-                      <FormControl>
-                        <Button
-                          variant={'outline'}
-                          className={cn(
-                            'w-full pl-3 text-left font-normal',
-                            !field.value && 'text-muted-foreground'
-                          )}
-                        >
-                          {field.value ? (
-                            formatDate(field.value)
-                          ) : (
-                            <span>Pick a date</span>
-                          )}
-                          <CalendarClock className="ml-auto h-4 w-4 opacity-50" />
-                        </Button>
-                      </FormControl>
-                    </PopoverTrigger>
-                    <PopoverContent className="w-auto p-0" align="start">
-                      <Calendar
-                        mode="single"
-                        selected={new Date(field.value)}
-                        onSelect={(date) => {
-                          const dateString = date?.toISOString();
-                          field.onChange(dateString);
-                        }}
-                        disabled={(date) => {
-                          return (
-                            date < new Date(watchedStartDate) ||
-                            date < new Date('1900-01-01')
-                          );
-                        }}
-                        initialFocus
-                      />
-                    </PopoverContent>
-                  </Popover>
-
                   <FormMessage />
                 </FormItem>
               )}

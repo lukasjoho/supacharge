@@ -122,7 +122,7 @@ const DecisionBadge = ({ decision }: DecisionBadgeProps) => {
           'border-yellow-500 bg-yellow-500/20 text-yellow-500 hover:bg-yellow-500/30'
       )}
     >
-      {decision === 'NONE' ? '-' : decision}
+      {decision === 'NONE' ? 'NONE' : decision}
     </Badge>
   );
 };
