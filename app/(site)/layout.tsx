@@ -1,5 +1,5 @@
 import Footer from '@/components/layout/Footer';
-import Siteheader from '@/components/layout/header/siteheader';
+import SiteHeader from '@/components/layout/header/site/SiteHeader';
 
 interface SiteLayoutProps {
   children: React.ReactNode;
@@ -8,7 +8,7 @@ interface SiteLayoutProps {
 const SiteLayout = ({ children }: SiteLayoutProps) => {
   return (
     <>
-      <Siteheader />
+      <SiteHeader />
       {children}
       <Footer />
     </>

@@ -45,11 +45,9 @@ const Hero = () => {
             </Title>
           </div>
           <p className="text-base md:text-lg text-muted-foreground sm:text-xl text-center px-4 max-w-[900px] animation-fade-in animation-delay-300">
-            Uplift is an experimentation platform for modern product and
-            engineering teams streamlining the management, deployment and
-            analysis of experiments. Accelerate your product growth by bringing
-            experiment visibility, data focus and hypothesis-centricity to your
-            team.
+            Supacharge is an experimentation platform for modern product and
+            engineering teams. Accelerate your product growth by streamlining
+            the management, deployment and analysis of your experiments.
           </p>
           <div className="flex gap-2">
             <GoToAppButton />
