@@ -57,6 +57,7 @@ model Team {
   users       User[]
   projects    Project[]
   currentUsers User[] @relation("CurrentTeamUsers")
+  apiKeys     ApiKey[]
 }
 
 model Account {
@@ -94,6 +95,14 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+model ApiKey {
+  id        String   @id @default(uuid())
+  name      String
+  createdAt DateTime @default(now())
+  team     Team     @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  teamId    String
 }
 
 

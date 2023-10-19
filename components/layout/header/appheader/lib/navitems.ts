@@ -5,6 +5,6 @@ export const APP_NAV_ITEMS = [
   },
   {
     label: 'Flags',
-    href: '/flags',
+    href: '/flags/api-output',
   },
 ];

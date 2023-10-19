@@ -56,11 +56,11 @@ const Flags = () => {
   }, [activeVariants, experiment]);
 
   const fireToast = () => {
-    toast(
+    toast.success(
       (t) => (
         <ToastDialog
           id={t.id}
-          title="Experiment are exposed via API 🧑‍💻"
+          title="Experiments are exposed via an API 🧑‍💻"
           message="The Supacharge feature flag API lets any client application consume your experiment configuration."
         />
       ),

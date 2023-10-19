@@ -73,7 +73,7 @@ const Decision = ({ decision }: DecisionProps) => {
                   onSelect={async () => {
                     setValue(decision);
                     if (!hasSelected) {
-                      toast(
+                      toast.success(
                         (t) => (
                           <ToastDialog
                             id={t.id}

@@ -48,6 +48,29 @@ export async function assignCurrentTeam(teamSlug: string) {
   });
 }
 
+export async function createAPIKey(
+  data: {
+    name: string;
+  },
+  team: string
+) {
+  try {
+    const dbKey = await prisma.apiKey.create({
+      data: {
+        ...data,
+        team: {
+          connect: {
+            slug: team,
+          },
+        },
+      },
+    });
+    return ActionResponse.success('API Key created.', dbKey);
+  } catch (error: any) {
+    return ActionResponse.error(error?.message || 'Update failed', error);
+  }
+}
+
 export async function updateProjectDecision(
   projectId: string,
   decision: Decision

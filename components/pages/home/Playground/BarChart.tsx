@@ -13,7 +13,7 @@ const BarChart = () => {
   const { activeVariants } = useVariants();
 
   const fireToast = () => {
-    toast(
+    toast.success(
       (t) => (
         <ToastDialog
           id={t.id}

@@ -5,7 +5,7 @@ import { signOut } from 'next-auth/react';
 
 const LogOutDropdownItem = () => {
   return (
-    <DropdownMenuItem onClick={() => signOut()}>
+    <DropdownMenuItem onClick={() => signOut({ callbackUrl: '/' })}>
       <LogOut className="mr-2 h-4 w-4" />
       <span>Log out</span>
     </DropdownMenuItem>

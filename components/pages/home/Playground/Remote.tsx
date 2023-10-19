@@ -15,7 +15,7 @@ const Remote = () => {
       isEnabled: isEnabled,
     });
     if (!hasSelected) {
-      toast(
+      toast.success(
         (t) => (
           <ToastDialog
             id={t.id}

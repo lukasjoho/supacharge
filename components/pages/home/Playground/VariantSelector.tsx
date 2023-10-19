@@ -39,11 +39,11 @@ const VariantSelector = ({ name }: any) => {
   const handleRemove = () => {
     setActiveVariants(activeVariants.slice(0, -1));
     if (!hasSelected) {
-      toast(
+      toast.success(
         (t) => (
           <ToastDialog
             id={t.id}
-            title="You adjusted variants! 🚥"
+            title="You set variants! 🚥"
             message="With Supacharge you decide how you want to split your traffic and roll out experiments using variants."
           />
         ),

@@ -40,7 +40,7 @@ const Draggable = ({ project, range, options }: any) => {
     }));
 
     if (!hasSelected) {
-      toast(
+      toast.success(
         (t) => (
           <ToastDialog
             id={t.id}

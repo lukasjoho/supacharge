@@ -17,11 +17,11 @@ const Navbar = () => {
                 href={`/team/${segments[1]}/${item.href}`}
                 className={cn(
                   'relative h-16 grid place-items-center text-muted-foreground px-4 font-medium',
-                  '/' + segments[2] === item.href && 'text-foreground'
+                  item.href.startsWith('/' + segments[2]) && 'text-foreground'
                 )}
               >
                 <span>{item.label}</span>
-                {'/' + segments[2] === item.href && <ActiveUnderline />}
+                {item.href.startsWith('/' + segments[2]) && <ActiveUnderline />}
               </Link>
             </li>
           );
