@@ -34,6 +34,7 @@ export const VariantsProvider = ({
   const [activeVariantId, setActiveVariantId] = useState('a');
   const [activeVariants, setActiveVariants] = useState(variants.slice(0, 3));
   const [experiment, setExperiment] = useState(generateExperiment(new Date()));
+
   return (
     <VariantsContext.Provider
       value={{

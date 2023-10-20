@@ -17,7 +17,7 @@ const HeroIcon = ({ src, side }: HeroIconProps) => {
       src={src}
       alt=""
       className={cn(
-        'w-20 sm:w-28 md:w-32 lg:w-40 absolute top-0 sm:top-8 md:top-1/3 -translate-y-1/2 opacity-75',
+        'w-20 sm:w-28 md:w-32 lg:w-40 absolute -top-4 sm:top-8 md:top-1/3 -translate-y-1/2 opacity-75',
         side == 'left' ? 'left-0' : 'right-0'
       )}
     />
@@ -36,7 +36,7 @@ const Hero = () => {
             <Variants />
             <Title
               as="h1"
-              className="text-4xl md:text-6xl lg:text-7xl 2xl:text-8xl text-center order-first md:order-last"
+              className="text-[2.5rem] leading-[2.75rem] md:text-6xl lg:text-7xl 2xl:text-8xl text-center order-first md:order-last"
             >
               <div className="animation-fade-in animation-delay-100">
                 Experiment

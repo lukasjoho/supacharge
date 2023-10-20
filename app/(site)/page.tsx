@@ -7,7 +7,7 @@ import Walkthrough from '@/components/shared/Walkthrough';
 
 const HomePage = async () => {
   return (
-    <div className="pt-12 md:pt-16 pb-32 md:pb-48 space-y-24 md:space-y-32">
+    <div className="pt-16 md:pt-16 pb-32 md:pb-48 space-y-24 md:space-y-32">
       <VariantsProvider>
         <Hero />
         <Playground />
