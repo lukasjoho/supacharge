@@ -37,11 +37,11 @@ const PlayAroundLabel = ({ className, ...props }: InteractiveLabelProps) => (
 const Playground = () => {
   return (
     <ScrollAnimationWrapper>
-      <Container className="max-w-[900px] 2xl:max-w-[1000px] relative ccursor-triangle">
+      <Container className="max-w-[900px] 2xl:max-w-[1000px] relative  -mt-8">
         <div className="absolute right-0 z-10 bg-gradient-to-r from-transparent to-background w-24 h-full pointer-events-none"></div>
         <InteractiveLabel className="md:hidden absolute right-5 top-12 -translate-y-[100%] z-10" />
         <PlayAroundLabel className="md:hidden absolute left-3 top-12 -translate-y-[150%] z-10" />
-        <div className="overflow-scroll md:overflow-visible -mx-3 px-6 py-12 -my-12 md:my-0 md:px-0 md:py-0 md:mx-0">
+        <div className="ccursor-triangle overflow-scroll md:overflow-visible -mx-3 px-6 py-12 -my-12 md:my-0 md:px-0 md:py-0 md:mx-0">
           <div className="min-w-[900px] md:min-w-[700px] relative border rounded-xl p-4 grid grid-cols-5 md:grid-cols-3 grid-rows-2 md:grid-rows-3 gap-4 shadow-[0_5px_60px_-30px_rgba(148,_163,_184,_0.7)] md:shadow-[0_0px_60px_-30px_rgba(148,_163,_184,_0.7)]">
             <InteractiveLabel className="hidden md:flex absolute right-2 top-0 -translate-y-[100%]" />
 

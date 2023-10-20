@@ -1,12 +1,17 @@
 'use client';
-import { motion, useInView } from 'framer-motion';
+import { cn } from '@/lib/utils';
+import { HTMLMotionProps, motion, useInView } from 'framer-motion';
 import React, { useRef } from 'react';
 
-interface ScrollAnimationWrapperProps {
+interface ScrollAnimationWrapperProps extends HTMLMotionProps<'div'> {
   children: React.ReactNode;
 }
 
-const ScrollAnimationWrapper = ({ children }: ScrollAnimationWrapperProps) => {
+const ScrollAnimationWrapper = ({
+  children,
+  ...props
+}: ScrollAnimationWrapperProps) => {
+  const { className, ...rest } = props;
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, {
     margin: '-200px 0px',
@@ -25,6 +30,7 @@ const ScrollAnimationWrapper = ({ children }: ScrollAnimationWrapperProps) => {
         ease: [0.74, 0, 0.19, 1.02],
       }}
       ref={ref}
+      className={cn(className)}
     >
       {children}
     </motion.div>

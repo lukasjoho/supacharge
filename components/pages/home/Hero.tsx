@@ -36,7 +36,7 @@ const Hero = () => {
             <Variants />
             <Title
               as="h1"
-              className="text-[2.5rem] leading-[2.75rem] md:text-6xl lg:text-7xl 2xl:text-8xl text-center order-first md:order-last"
+              className="text-[2.5rem] leading-[2.75rem] md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl text-center order-first md:order-last"
             >
               <div className="animation-fade-in animation-delay-100">
                 Experiment
