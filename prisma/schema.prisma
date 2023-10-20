@@ -23,6 +23,8 @@ model User {
   teams         Team[] 
   currentTeam   Team?     @relation("CurrentTeamUsers", fields: [currentTeamId], references: [id])
   currentTeamId String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt @default(now())
 }
 
 enum Decision {
