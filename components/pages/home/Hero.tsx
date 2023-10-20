@@ -2,6 +2,7 @@ import Container from '@/components/layout/Container';
 import GoToAppButton from '@/components/shared/GoToAppButton';
 import Title from '@/components/shared/Title';
 import { cn } from '@/lib/utils';
+import Balancer from 'react-wrap-balancer';
 import Variants from './Variants';
 import HeroWord from './Variants/HeroWord';
 
@@ -43,10 +44,12 @@ const Hero = () => {
               <HeroWord className="animation-fade-in animation-delay-200" />
             </Title>
           </div>
-          <p className="text-base md:text-lg text-muted-foreground sm:text-xl text-center px-4 max-w-[900px] animation-fade-in animation-delay-300">
-            Supacharge is an experimentation platform for modern product and
-            engineering teams. Accelerate your product growth by streamlining
-            the management, deployment and analysis of your experiments.
+          <p className="text-base md:text-xl text-muted-foreground sm:text-xl text-center px-4 max-w-[900px] animation-fade-in animation-delay-300">
+            <Balancer>
+              Supacharge is an experimentation platform for modern product and
+              engineering teams. Accelerate your product growth by streamlining
+              the management, deployment and analysis of your experiments.
+            </Balancer>
           </p>
           <div className="flex gap-2">
             <GoToAppButton className="" size="lg" />
