@@ -21,7 +21,7 @@ const WalkthroughNavItem: FC<WalkthroughNavItemProps> = ({ item }) => {
     >
       <div
         className={cn(
-          'bg-background rounded-md py-2 md:py-3 px-3 md:px-4 text-base md:text-lg font-semibold md:font-bold text-muted-foreground'
+          'bg-background rounded-md py-2 md:py-3 px-3 md:px-4 text-base md:text-lg font-semibold text-muted-foreground'
         )}
       >
         <div

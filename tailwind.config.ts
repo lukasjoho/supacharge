@@ -54,6 +54,7 @@ const config: Config = {
         },
       },
       fontFamily: {
+        din: ['var(--font-din)'],
         gaegu: ['var(--font-gaegu)'],
       },
       fontSize: {

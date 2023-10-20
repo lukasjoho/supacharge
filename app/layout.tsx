@@ -2,17 +2,9 @@ import QueryProvider from '@/components/providers/QueryProvider';
 import AuthProvider from '@/components/providers/SessionProvider';
 import ToasterProvider from '@/components/providers/ToasterProvider';
 import { ModalProvider } from '@/components/shared/modal';
+import { din, gaegu, inter } from '@/lib/fonts';
 import type { Metadata } from 'next';
-import { Gaegu, Inter } from 'next/font/google';
 import './globals.css';
-
-const inter = Inter({ subsets: ['latin'] });
-
-export const gaegu = Gaegu({
-  variable: '--font-gaegu',
-  subsets: ['latin'],
-  weight: ['300', '400', '700'],
-});
 
 export const metadata: Metadata = {
   title: 'Supacharge',
@@ -28,8 +20,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark">
-      <body className={`${inter.className} ${gaegu.variable}`}>
-        <main className="flex min-h-screen flex-col">
+      <body
+        className={`${din.variable} ${inter.className} ${gaegu.variable} font-din`}
+      >
+        <main className="flex min-h-screen flex-col ">
           <AuthProvider>
             <QueryProvider>
               <ModalProvider>

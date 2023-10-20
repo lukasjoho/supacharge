@@ -17,7 +17,10 @@ const GridItem = ({ children, title, ...props }: GridItemProps) => {
       )}
       {...rest}
     >
-      <Title className="text-center text-lg text-muted-foreground px-4 py-4">
+      <Title
+        className="text-center text-lg text-muted-foreground px-4 py-4"
+        semi
+      >
         {title}
       </Title>
       <div className="grow overflow-hidden flex flex-col">{children}</div>

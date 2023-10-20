@@ -66,7 +66,7 @@ const WalkthroughItem: FC<WalkthroughItemProps> = ({
               <div className="space-y-2">
                 <p
                   className={cn(
-                    'font-bold text-lg bg-gradient-to-t bg-clip-text text-transparent',
+                    'font-semibold text-lg bg-gradient-to-t bg-clip-text text-transparent',
                     color
                   )}
                 >
