@@ -118,6 +118,29 @@ export async function getUsersByTeam(teamSlug: string) {
   });
 }
 
+export async function createTeam(data: { name: string; slug: string }) {
+  const user = await getAuthUser();
+  if (!user) throw new Error('No user found');
+  try {
+    const team = await prisma.team.create({
+      data: {
+        ...data,
+        users: {
+          connect: {
+            email: user.email as undefined | string,
+          },
+        },
+      },
+    });
+    return ActionResponse.success('Team created', team);
+  } catch (error: any) {
+    return ActionResponse.error(
+      error.message || 'Team creation failed.',
+      error
+    );
+  }
+}
+
 export async function getTeamsByUser() {
   const user = await getAuthUser();
   if (!user) throw new Error('No user found');
