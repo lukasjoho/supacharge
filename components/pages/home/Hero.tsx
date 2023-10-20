@@ -1,7 +1,6 @@
 import Container from '@/components/layout/Container';
 import GoToAppButton from '@/components/shared/GoToAppButton';
 import Title from '@/components/shared/Title';
-import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import Variants from './Variants';
 import HeroWord from './Variants/HeroWord';
@@ -50,8 +49,8 @@ const Hero = () => {
             the management, deployment and analysis of your experiments.
           </p>
           <div className="flex gap-2">
-            <GoToAppButton />
-            <Button variant="outline">View demo</Button>
+            <GoToAppButton className="" size="lg" />
+            {/* <Button variant="outline">View demo</Button> */}
           </div>
         </div>
       </Container>
