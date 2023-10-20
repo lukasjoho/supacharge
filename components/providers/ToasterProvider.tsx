@@ -10,50 +10,34 @@ const ToasterProvider = ({ children }: { children: React.ReactNode }) => {
       <Toaster
         toastOptions={{
           // Define default options
-          position: 'bottom-right',
+          position: 'top-left',
           duration: 3000,
           style: {
-            padding: '16px 12px 16px 12px',
-            backgroundColor: `${colors.slate[800]}90`,
-            border: `1px solid ${colors.slate[800]}`,
+            padding: '12px 12px 12px 12px',
+            backgroundColor: colors.slate[800],
             color: colors.slate[50],
-            backdropFilter: 'blur(20px)',
+          },
+          iconTheme: {
+            primary: colors.slate[50],
+            secondary: colors.slate[950],
           },
 
-          loading: {
-            icon: '👀',
-            style: {
-              background: colors.slate[950],
-              color: 'white',
-              border: `1px solid ${colors.slate[800]}`,
-            },
-            iconTheme: {
-              primary: 'white',
-              secondary: colors.slate[950],
-            },
-          },
           success: {
             style: {
-              backgroundColor: `${colors.green[600]}90`,
-              border: `1px solid ${colors.green[600]}`,
-              color: 'white',
-              backdropFilter: 'blur(20px)',
+              backgroundColor: colors.green[600],
             },
             iconTheme: {
-              primary: 'white',
+              primary: colors.slate[50],
               secondary: colors.green[600],
             },
           },
 
           error: {
             style: {
-              backgroundColor: `${colors.red[600]}90`,
-              color: 'white',
-              backdropFilter: 'blur(20px)',
+              backgroundColor: colors.red[600],
             },
-
             iconTheme: {
-              primary: 'white',
+              primary: colors.slate[50],
               secondary: colors.red[600],
             },
           },
