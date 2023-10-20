@@ -16,7 +16,7 @@ const Avatar = ({ data, type = 'user', ...props }: AvatarProps) => {
   return (
     <>
       <UIAvatar
-        className={cn('', type === 'team' && 'rounded-sm', className)}
+        className={cn('', type === 'team' && 'rounded-sm bg-muted', className)}
         {...rest}
       >
         <AvatarImage src={data?.image as string | undefined} />

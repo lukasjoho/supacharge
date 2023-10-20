@@ -35,7 +35,7 @@ export const authOptions: NextAuthOptions = {
       return session;
     },
 
-    async jwt({ token, user }: any) {
+    async jwt({ token, trigger, session, user }: any) {
       let dbUser;
       dbUser = await prisma.user.findFirst({
         where: {
@@ -100,13 +100,33 @@ export const authOptions: NextAuthOptions = {
           },
         });
       }
+      let teams = [...dbUser.teams];
+      if (trigger === 'update') {
+        if (Object.keys(session)[0] === 'teamSlug') {
+          console.log('ADD TEAM');
+          const team = await prisma.team.findFirst({
+            where: {
+              slug: session.teamSlug,
+            },
+            select: {
+              id: true,
+              slug: true,
+              name: true,
+            },
+          });
+          if (team) {
+            teams = [...teams, team];
+          }
+          console.log('TEAMS: ', teams);
+        }
+      }
 
       return {
         id: dbUser.id,
         name: dbUser.name,
         email: dbUser.email,
         image: dbUser.image,
-        teams: dbUser.teams,
+        teams: teams,
         currentTeam: dbUser.currentTeam,
       };
     },

@@ -53,7 +53,7 @@ const CreateTeamFormModal = () => {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     const res = await createTeam(values);
     if (res.success) {
-      update();
+      await update({ teamSlug: res.data.slug });
       hide();
       toast.success('Team created');
       router.push(`/team/${res.data.slug}`);

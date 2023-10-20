@@ -16,6 +16,7 @@ import { getTeamsByUser } from '@/lib/actions';
 import { cn } from '@/lib/utils';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { Check, ChevronsUpDown } from 'lucide-react';
+import { useSession } from 'next-auth/react';
 import { useRouter, useSelectedLayoutSegments } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
@@ -29,11 +30,13 @@ const TeamDropdown = () => {
     enabled: !!teamSlug,
   });
 
+  const { data: session } = useSession();
+
   useEffect(() => {
     if (teamSlug) {
       queryClient.invalidateQueries(['teams']);
     }
-  }, [teamSlug, queryClient]);
+  }, [teamSlug, queryClient, session]);
   const router = useRouter();
   return (
     <DropdownMenu open={open} onOpenChange={setOpen}>
