@@ -8,8 +8,8 @@ const APIKeyPage = ({ params }: { params: { team: string } }) => {
   return (
     <AsideLayout
       team={team}
-      page="/flags/api-keys"
-      pageTitle="API Keys"
+      page="/flags/api-key"
+      pageTitle="API Key"
       items={flagsPages}
       sidebarTitle="Feature Flags"
     >
