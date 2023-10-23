@@ -23,13 +23,10 @@ const DragItem = forwardRef<HTMLDivElement, DragItemProps>((props, ref) => {
   const { item, updateItem, range } = props;
   const { id, name } = item;
 
-  const isActive = isWithinInterval(
-    new Date(new Date().setHours(12, 0, 0, 0)),
-    {
-      start: new Date(item.startDate!),
-      end: new Date(item.endDate!),
-    }
-  );
+  const isActive = isWithinInterval(startOfDay(new Date()), {
+    start: startOfDay(new Date(item.startDate!)),
+    end: startOfDay(new Date(item.endDate!)),
+  });
 
   const colorClassNames = isActive
     ? {
