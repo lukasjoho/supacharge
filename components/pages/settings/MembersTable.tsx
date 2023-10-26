@@ -11,8 +11,15 @@ import {
 import prisma from '@/lib/prisma';
 import { format } from 'date-fns';
 
-interface MembersTableProps {
+export interface MembersTableProps {
   team: string;
+}
+
+interface TableRecord {
+  id: string;
+  name: string | null;
+  email: string;
+  createdAt: string;
 }
 
 const MembersTable = async ({ team }: MembersTableProps) => {
@@ -22,6 +29,14 @@ const MembersTable = async ({ team }: MembersTableProps) => {
     },
     include: {
       users: true,
+    },
+  });
+
+  const invites = await prisma.invite.findMany({
+    where: {
+      team: {
+        slug: team,
+      },
     },
   });
 

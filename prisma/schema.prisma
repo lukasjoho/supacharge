@@ -25,6 +25,7 @@ model User {
   currentTeamId String?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt @default(now())
+  invitationsSent Invite[] @relation("sentBy") 
 }
 
 enum Decision {
@@ -63,6 +64,7 @@ model Team {
   projects    Project[]
   currentUsers User[] @relation("CurrentTeamUsers")
   apiKeys     ApiKey[]
+  invites     Invite[]
 }
 
 model Account {
@@ -108,6 +110,18 @@ model ApiKey {
   createdAt DateTime @default(now())
   team     Team     @relation(fields: [teamId], references: [id], onDelete: Cascade)
   teamId    String
+}
+
+model Invite {
+  id        String   @id @default(cuid())
+  sentBy  User  @relation("sentBy", fields: [senderId], references: [id])
+  senderId  String
+  sentToEmail  String 
+  team     Team     @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  teamId    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  accepted  Boolean @default(false)
 }
 
 

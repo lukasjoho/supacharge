@@ -19,7 +19,7 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
   callbacks: {
-    async signIn({ user, account, profile, email, credentials }: any) {
+    async signIn() {
       return true;
     },
     async session({ token, session }: any) {
@@ -64,6 +64,16 @@ export const authOptions: NextAuthOptions = {
         return token;
       }
 
+      const invite = await prisma.invite.findFirst({
+        where: {
+          sentToEmail: token.email,
+          accepted: false,
+        },
+        orderBy: {
+          createdAt: 'desc',
+        },
+      });
+
       const hasNoTeams = dbUser?.teams.length === 0;
       if (hasNoTeams) {
         dbUser = await prisma.user.update({
@@ -100,6 +110,50 @@ export const authOptions: NextAuthOptions = {
           },
         });
       }
+
+      if (invite) {
+        dbUser = await prisma.user.update({
+          where: {
+            email: token.email,
+          },
+          data: {
+            teams: {
+              connect: {
+                id: invite.teamId,
+              },
+            },
+            currentTeam: {
+              connect: {
+                id: invite.teamId,
+              },
+            },
+          },
+          include: {
+            teams: {
+              select: {
+                id: true,
+                slug: true,
+                name: true,
+              },
+            },
+            currentTeam: {
+              select: {
+                id: true,
+                slug: true,
+                name: true,
+              },
+            },
+          },
+        });
+        await prisma.invite.update({
+          where: {
+            id: invite.id,
+          },
+          data: {
+            accepted: true,
+          },
+        });
+      }
       let teams = [...dbUser.teams];
       if (trigger === 'update') {
         if (Object.keys(session)[0] === 'teamSlug') {
@@ -130,8 +184,11 @@ export const authOptions: NextAuthOptions = {
         currentTeam: dbUser.currentTeam,
       };
     },
-    redirect() {
-      return '/team';
+
+    async redirect({ url, baseUrl }) {
+      if (url.startsWith('/')) return `${baseUrl}${url}`;
+      else if (new URL(url).origin === baseUrl) return url;
+      return baseUrl;
     },
   },
   secret: process.env.NEXTAUTH_SECRET!,

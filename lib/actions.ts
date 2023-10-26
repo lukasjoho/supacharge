@@ -118,6 +118,44 @@ export async function getUsersByTeam(teamSlug: string) {
   });
 }
 
+export async function createInvite(data: { email: string }, teamSlug: string) {
+  const user = await getAuthUser();
+  try {
+    const dbUser = await prisma.user.findUnique({
+      where: {
+        email: data.email,
+        teams: {
+          some: {
+            slug: teamSlug,
+          },
+        },
+      },
+    });
+    if (dbUser)
+      return ActionResponse.error('User is already a team member', dbUser);
+    const invite = await prisma.invite.create({
+      data: {
+        sentToEmail: data.email,
+        team: {
+          connect: {
+            slug: teamSlug,
+          },
+        },
+        sentBy: {
+          connect: {
+            email: user?.email as undefined | string,
+          },
+        },
+      },
+    });
+    return ActionResponse.success('Invite created', invite);
+  } catch (error: any) {
+    return ActionResponse.error(error.message || 'Invite creation failed.', {
+      error,
+    });
+  }
+}
+
 export async function createTeam(data: { name: string; slug: string }) {
   const user = await getAuthUser();
   if (!user) throw new Error('No user found');

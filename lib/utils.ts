@@ -24,3 +24,12 @@ export function formatDate(dateString: string) {
   const day = date.getDate();
   return `${month} ${day}, ${year}`;
 }
+
+export function nullifyEmptyValues(values: any) {
+  const nullifiedValues: any = {};
+  Object.keys(values).forEach((key) => {
+    nullifiedValues[key] =
+      values[key] === '' || !values[key] === undefined ? null : values[key];
+  });
+  return nullifiedValues;
+}

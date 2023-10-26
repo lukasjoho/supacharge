@@ -1,5 +1,5 @@
 import AsideLayout from '@/components/layout/AsideLayout';
-import MembersTable from '@/components/pages/settings/MembersTable';
+import Members from '@/components/pages/settings/Members';
 import { settingsPages } from '@/lib/config/settings';
 
 const MembersPage = ({ params }: { params: { team: string } }) => {
@@ -14,7 +14,7 @@ const MembersPage = ({ params }: { params: { team: string } }) => {
       items={settingsPages}
     >
       <div>
-        <MembersTable team={team} />
+        <Members team={team} />
       </div>
     </AsideLayout>
   );
