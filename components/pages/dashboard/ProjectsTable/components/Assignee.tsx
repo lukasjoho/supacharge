@@ -51,7 +51,7 @@ const Assignee = ({ assignee, projectId, ...props }: AssigneeProps) => {
   return (
     <div
       onClick={(e) => e.stopPropagation()}
-      className={cn('', className)}
+      className={cn('inline-block', className)}
       {...rest}
     >
       <Popover open={open} onOpenChange={setOpen}>

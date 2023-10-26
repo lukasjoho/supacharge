@@ -46,14 +46,14 @@ const Decision = ({ decision, projectId }: DecisionProps) => {
   });
 
   return (
-    <div onClick={(e) => e.stopPropagation()}>
+    <div onClick={(e) => e.stopPropagation()} className="inline-block">
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button
             role="combobox"
             aria-expanded={open}
             variant="unstyled"
-            className="p-0"
+            className="p-0 h-auto"
           >
             <DecisionBadge
               decision={

@@ -1,6 +1,6 @@
 'use client';
 import { useEffect } from 'react';
-import { Modal, useModal } from '.';
+import { useModal } from '.';
 
 const InterceptionModal = ({ children }: any) => {
   const { show, hide, setIsActiveInterception } = useModal();
@@ -9,7 +9,7 @@ const InterceptionModal = ({ children }: any) => {
     return () => setIsActiveInterception(false);
   }, []);
   useEffect(() => {
-    show(<Modal>{children}</Modal>);
+    show(children);
     return () => hide();
   }, []);
   return <></>;

@@ -1,7 +1,6 @@
 'use server';
 
 import { Decision, Prisma } from '@prisma/client';
-import { revalidatePath } from 'next/cache';
 import ActionResponse from './actionResponse';
 import { getAuthUser } from './auth';
 import prisma from './prisma';
@@ -211,12 +210,10 @@ export async function createProject(
         },
       },
     });
-    revalidatePath('/team/[id]/dashboard', 'layout');
-    revalidatePath('/team/[id]/dashboard', 'page');
     return ActionResponse.success('Project created', project);
   } catch (error: any) {
     return ActionResponse.error(
-      error.message || 'Project creation failed.',
+      error.message || 'Project creation failed',
       error
     );
   }
@@ -231,8 +228,11 @@ export async function updateProject(
       where: { id },
       data,
     });
-    return ActionResponse.success('Updated', updatedItem);
+    return ActionResponse.success('Project updated', updatedItem);
   } catch (error: any) {
-    return ActionResponse.error(error.message || 'Update failed', error);
+    return ActionResponse.error(
+      error.message || 'Project update failed',
+      error
+    );
   }
 }

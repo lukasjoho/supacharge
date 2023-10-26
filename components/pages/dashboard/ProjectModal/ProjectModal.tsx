@@ -1,3 +1,5 @@
+'use client';
+import FormSubmitButton from '@/components/shared/FormSubmitButton';
 import FileInput from '@/components/shared/ImageUpload/FileInput';
 import {
   Modal,
@@ -24,11 +26,12 @@ import {
   PopoverTrigger,
 } from '@/components/ui/popover';
 import { Textarea } from '@/components/ui/textarea';
-import { createProject } from '@/lib/actions';
+import { createProject, updateProject } from '@/lib/actions';
 import { cn, formatDate, slugify } from '@/lib/utils';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Prisma } from '@prisma/client';
 import { CalendarClock, Sparkles } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
@@ -94,15 +97,23 @@ const ProjectModal = ({ project }: ProjectModalProps) => {
     return nullifiedValues;
   }
 
+  const { isSubmitting } = form.formState;
+  const router = useRouter();
   async function onSubmit(values: z.infer<typeof formSchema>) {
     const nullifiedValues: Omit<Prisma.ProjectCreateInput, 'team'> =
       nullifyEmptyValues(values);
-    const res = await createProject(nullifiedValues);
+    let res;
+    if (project) {
+      res = await updateProject(project.id, nullifiedValues);
+    } else {
+      res = await createProject(nullifiedValues);
+    }
     if (res.success) {
-      toast.success('Project created successfully.');
+      toast.success(res.message);
+      router.refresh();
       hide();
     } else {
-      toast.error('Project creation failed.');
+      toast.error(res.message);
     }
   }
   return (
@@ -281,12 +292,11 @@ const ProjectModal = ({ project }: ProjectModalProps) => {
           </div>
         </ModalContent>
         <ModalFooter className="flex justify-between">
-          <Button type="submit" variant="outline">
-            Cancel
-          </Button>
-          <Button className="ml-auto" type="submit">
-            Create
-          </Button>
+          <FormSubmitButton
+            className="ml-auto"
+            label={project ? 'Update' : 'Create'}
+            isSubmitting={isSubmitting}
+          />
         </ModalFooter>
       </Modal>
     </Form>

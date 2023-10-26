@@ -47,3 +47,20 @@ export function formatInitials(name: string) {
 
   return initials;
 }
+
+export function generateStatusStrings(word: string) {
+  const vowels = 'aeiouAEIOU';
+
+  // Check if the word ends with a vowel
+  const endsWithVowel = vowels.includes(word[word.length - 1]);
+
+  // Create the "ing" form based on whether it ends with a vowel
+  const submitting = endsWithVowel
+    ? `${word}ing...`
+    : `${word.slice(0, -1)}ing...`;
+
+  return {
+    default: word,
+    submitting,
+  };
+}

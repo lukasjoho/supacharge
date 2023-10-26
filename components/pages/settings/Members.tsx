@@ -7,7 +7,7 @@ interface MembersProps extends MembersTableProps {}
 
 const Members = (props: MembersProps) => {
   return (
-    <Tabs defaultValue="members" className="">
+    <Tabs defaultValue="members" className="space-y-4">
       <div className="flex justify-between items-center">
         <TabsList>
           <TabsTrigger value="members">Members</TabsTrigger>
