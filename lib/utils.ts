@@ -33,3 +33,17 @@ export function nullifyEmptyValues(values: any) {
   });
   return nullifiedValues;
 }
+
+export function formatInitials(name: string) {
+  const words = name.trim().split(' ');
+  let initials = '';
+  if (words.length === 1) {
+    initials = words[0].substring(0, 2);
+  } else if (words.length >= 2) {
+    for (let i = 0; i < words.length; i++) {
+      initials += words[i].charAt(0);
+    }
+  }
+
+  return initials;
+}

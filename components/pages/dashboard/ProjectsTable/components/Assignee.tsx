@@ -24,12 +24,12 @@ import { useQuery } from '@tanstack/react-query';
 import { useSelectedLayoutSegments } from 'next/navigation';
 import toast from 'react-hot-toast';
 
-interface AssigneeProps {
+interface AssigneeProps extends React.HTMLAttributes<HTMLDivElement> {
   assignee: Prisma.UserGetPayload<{}>;
   projectId: string;
 }
 
-const Assignee = ({ assignee, projectId }: AssigneeProps) => {
+const Assignee = ({ assignee, projectId, ...props }: AssigneeProps) => {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState(assignee?.id);
   const teamSlug = useSelectedLayoutSegments()[1];
@@ -46,15 +46,21 @@ const Assignee = ({ assignee, projectId }: AssigneeProps) => {
     e.stopPropagation();
   };
 
+  const { className, ...rest } = props;
+
   return (
-    <div onClick={(e) => e.stopPropagation()}>
+    <div
+      onClick={(e) => e.stopPropagation()}
+      className={cn('', className)}
+      {...rest}
+    >
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button
             role="combobox"
             aria-expanded={open}
             variant="unstyled"
-            className="p-0"
+            className="p-0 h-auto"
             onClick={handleAvatarClick}
           >
             <Avatar
