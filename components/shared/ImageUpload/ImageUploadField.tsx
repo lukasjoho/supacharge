@@ -27,7 +27,7 @@ const ImageUploadField: FC<ImageUploadFieldProps> = ({
       <div
         tabIndex={0}
         className={cn(
-          'hover:bg-muted group relative flex aspect-[4/3] cursor-pointer items-center justify-center overflow-hidden rounded-md border border-input ring-offset-background transition duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2'
+          'w-full hover:bg-muted group relative flex aspect-[4/3] cursor-pointer items-center justify-center overflow-hidden rounded-md border border-input ring-offset-background transition duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2'
         )}
         {...props}
       >

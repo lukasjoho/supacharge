@@ -51,16 +51,15 @@ function FileInput({ value, setValue }: any) {
   };
 
   return (
-    <div>
+    <>
       <ImageUploadField
         onClick={handleButtonClick}
         isUploading={isUploading}
         imageUrl={value}
         setImageUrl={setValue}
       />
-      <pre>{value}</pre>
       <input type="file" style={{ display: 'none' }} onChange={uploadPhoto} />
-    </div>
+    </>
   );
 }
 

@@ -107,7 +107,11 @@ const ProjectModal = ({ project }: ProjectModalProps) => {
   }
   return (
     <Form {...form}>
-      <Modal as="form" onSubmit={form.handleSubmit(onSubmit)}>
+      <Modal
+        as="form"
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="md:min-w-[600px]"
+      >
         <ModalHeader>
           <ModalTitle>Title</ModalTitle>
         </ModalHeader>

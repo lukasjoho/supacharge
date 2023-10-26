@@ -2,7 +2,7 @@ import NewProjectButton from '@/components/shared/new/NewProjectButton';
 import DesktopHeader from '../../shared/desktop/DesktopHeader';
 import AppDesktopNavList from './AppDesktopNavList';
 import AvatarDropdown from './AvatarDropdown';
-import Settings from './Settings';
+import SettingsLink from './Settings';
 import TeamDropdown from './TeamDropdown';
 
 const AppDesktopHeader = () => {
@@ -14,7 +14,7 @@ const AppDesktopHeader = () => {
       </div>
       <div className="flex items-center gap-4">
         <NewProjectButton />
-        <Settings />
+        <SettingsLink />
         <AvatarDropdown />
       </div>
     </DesktopHeader>
