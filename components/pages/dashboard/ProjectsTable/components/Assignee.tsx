@@ -21,7 +21,7 @@ import {
 import { getUsersByTeam, updateProjectAssignee } from '@/lib/actions';
 import { cn } from '@/lib/utils';
 import { useQuery } from '@tanstack/react-query';
-import { useSelectedLayoutSegments } from 'next/navigation';
+import { useRouter, useSelectedLayoutSegments } from 'next/navigation';
 import toast from 'react-hot-toast';
 
 interface AssigneeProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -47,7 +47,7 @@ const Assignee = ({ assignee, projectId, ...props }: AssigneeProps) => {
   };
 
   const { className, ...rest } = props;
-
+  const router = useRouter();
   return (
     <div
       onClick={(e) => e.stopPropagation()}
@@ -85,6 +85,7 @@ const Assignee = ({ assignee, projectId, ...props }: AssigneeProps) => {
                     const res = await updateProjectAssignee(projectId, user.id);
                     if (res.success) {
                       toast.success('Project assignee updated.');
+                      router.refresh();
                     } else {
                       toast.error('Assignee update failed');
                     }

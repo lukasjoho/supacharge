@@ -36,10 +36,16 @@ import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import * as z from 'zod';
+import VariantSelect from '../VariantSelect';
 
 interface ProjectModalProps {
   project?: Prisma.ProjectGetPayload<{}>;
 }
+
+const objectSchema = z.object({
+  id: z.string(),
+  weight: z.number(),
+});
 
 const formSchema = z.object({
   name: z.string(),
@@ -48,11 +54,12 @@ const formSchema = z.object({
   startDate: z.string(),
   endDate: z.string(),
   imageUrl: z.string().optional(),
+  variants: z.array(objectSchema).optional(),
 });
 
 const ProjectModal = ({ project }: ProjectModalProps) => {
   const { hide } = useModal();
-  const { name, slug, hypothesis, startDate, endDate, imageUrl } =
+  const { name, slug, hypothesis, startDate, endDate, imageUrl, variants } =
     project ?? {};
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -64,11 +71,23 @@ const ProjectModal = ({ project }: ProjectModalProps) => {
       startDate: startDate?.toISOString() || new Date().toISOString(),
       endDate: endDate?.toISOString() ?? '',
       imageUrl: imageUrl ?? undefined,
+      variants: (variants as any) || [
+        {
+          id: 'a',
+          weight: 0.5,
+        },
+        { id: 'b', weight: 0.5 },
+      ],
     },
   });
   const watchedValue = form.watch('name');
   const watchedStartDate = form.watch('startDate');
   const watchedEndDate = form.watch('endDate');
+  const watchedVariants = form.watch('variants');
+
+  useEffect(() => {
+    console.log(form.getValues());
+  }, [watchedVariants]);
 
   useEffect(() => {
     form.setValue('slug', 'feat-' + slugify(watchedValue));
@@ -100,6 +119,7 @@ const ProjectModal = ({ project }: ProjectModalProps) => {
   const { isSubmitting } = form.formState;
   const router = useRouter();
   async function onSubmit(values: z.infer<typeof formSchema>) {
+    console.log('VALUES: ', values);
     const nullifiedValues: Omit<Prisma.ProjectCreateInput, 'team'> =
       nullifyEmptyValues(values);
     let res;
@@ -124,7 +144,7 @@ const ProjectModal = ({ project }: ProjectModalProps) => {
         className="md:min-w-[600px]"
       >
         <ModalHeader>
-          <ModalTitle>Title</ModalTitle>
+          <ModalTitle>{project ? 'Edit Project' : 'Create Project'}</ModalTitle>
         </ModalHeader>
         <ModalContent>
           <div className="space-y-8">
@@ -274,6 +294,22 @@ const ProjectModal = ({ project }: ProjectModalProps) => {
                 )}
               />
             </div>
+            <FormField
+              control={form.control}
+              name="variants"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Variants</FormLabel>
+                  <FormControl>
+                    <VariantSelect
+                      setValue={form.setValue}
+                      value={field.value!}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
             <FormField
               control={form.control}
               name="imageUrl"

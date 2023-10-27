@@ -35,6 +35,12 @@ enum Decision {
   NONE
 }
 
+enum Status {
+  DRAFT
+  INACTIVE
+  ACTIVE
+}
+
 model Project {
   id          String   @id @default(cuid())
   name        String
@@ -48,11 +54,12 @@ model Project {
   teamId      String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
-  status      Boolean @default(false)
+  status      Status? @default(DRAFT)
   decision    Decision? @default(NONE)
   imageUrl    String?
   improvement Decimal?
   statSig     Decimal?
+  variants    Json?
 }
 
 model Team {

@@ -46,8 +46,8 @@ export const columns: ColumnDef<Project>[] = [
     accessorKey: 'status',
     header: 'Status',
     cell: ({ row }) => {
-      const { status } = row.original;
-      return <Status status={status} />;
+      const { status, id } = row.original;
+      return <Status projectId={id} status={status} />;
     },
   },
   {

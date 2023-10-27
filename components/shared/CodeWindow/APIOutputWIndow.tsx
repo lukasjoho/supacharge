@@ -1,10 +1,26 @@
+import prisma from '@/lib/prisma';
 import CodeSyntax from '../CodeSyntax';
 
-const APIOutputWindow = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_HOST_URL}/api/flags`, {
-    cache: 'no-store',
+interface APIOutputWindowProps {
+  teamSlug: string;
+}
+
+const APIOutputWindow = async ({ teamSlug }: APIOutputWindowProps) => {
+  const flags = await prisma.project.findMany({
+    where: {
+      team: {
+        slug: teamSlug,
+      },
+    },
+    select: {
+      id: true,
+      slug: true,
+      name: true,
+      startDate: true,
+      endDate: true,
+      variants: true,
+    },
   });
-  const flags = await res.json();
   return (
     <CodeSyntax title="API Output" language="json">
       {JSON.stringify(flags, null, 4)}

@@ -12,7 +12,7 @@ const APIOutputPage = ({ params }: { params: { team: string } }) => {
       sidebarTitle="Feature Flags"
       items={flagsPages}
     >
-      <APIOutputWindow />
+      <APIOutputWindow teamSlug={team} />
     </AsideLayout>
   );
 };
