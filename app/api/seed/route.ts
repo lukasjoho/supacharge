@@ -1,7 +1,9 @@
 import prisma from '@/lib/prisma';
+import { Prisma } from '@prisma/client';
 import { NextResponse } from 'next/server';
 
 const TEAM_ID = 'clnrf4dzp0000hniqjt0jl2fw';
+const USER_ID = 'clo72t60p0006hnszyv1m8r19';
 
 export async function POST() {
   try {
@@ -38,26 +40,32 @@ const generateDatePlusDays = (days: number) => {
   return isoString;
 };
 
-const data: any[] = [
+const data: Prisma.ProjectCreateManyInput[] = [
   {
     name: 'Personalization Algorithm',
     slug: 'personalization-algorithm',
-    decision: 'REJECT',
+    decision: 'ACCEPT',
     hypothesis:
       'Compare the effectiveness of two different recommendation algorithms in showing personalized product recommendations to users and driving additional sales.',
     startDate: generateDatePlusDays(-5),
     endDate: generateDatePlusDays(11),
     teamId: TEAM_ID,
+    userId: USER_ID,
+    status: 'ACTIVE',
+    improvement: 0.22,
   },
   {
     name: 'Checkout Process Simplification',
     slug: 'checkout-process-simplification',
-    decision: 'ACCEPT',
+    decision: 'REJECT',
     hypothesis:
       'Evaluate a simplified checkout process against the current process to identify if reducing steps and form fields leads to a decrease in cart abandonment rates.',
     startDate: generateDatePlusDays(-25),
     endDate: generateDatePlusDays(-11),
     teamId: TEAM_ID,
+    userId: USER_ID,
+    status: 'INACTIVE',
+    improvement: -0.04,
   },
   {
     name: 'Social Proof Pop-ups',
@@ -68,6 +76,9 @@ const data: any[] = [
     startDate: generateDatePlusDays(-10),
     endDate: generateDatePlusDays(20),
     teamId: TEAM_ID,
+    userId: USER_ID,
+    status: 'ACTIVE',
+    improvement: 0.01,
   },
   {
     name: 'User Reviews Display',
@@ -78,16 +89,22 @@ const data: any[] = [
     startDate: generateDatePlusDays(3),
     endDate: generateDatePlusDays(12),
     teamId: TEAM_ID,
+    userId: USER_ID,
+    status: 'DRAFT',
+    improvement: null,
   },
   {
     name: 'Discount Placement',
-    decision: 'NONE',
+    decision: 'ACCEPT',
     slug: 'discount-placement',
     hypothesis:
       'Compare the performance of displaying discounts on product listings versus displaying them on individual product pages to understand where discounts are more effective.',
     startDate: generateDatePlusDays(-12),
     endDate: generateDatePlusDays(-5),
     teamId: TEAM_ID,
+    userId: USER_ID,
+    status: 'INACTIVE',
+    improvement: 0.09,
   },
   {
     name: 'Homepage Hero Banner',
@@ -98,15 +115,21 @@ const data: any[] = [
     startDate: generateDatePlusDays(-20),
     endDate: generateDatePlusDays(4),
     teamId: TEAM_ID,
+    userId: USER_ID,
+    status: 'ACTIVE',
+    improvement: -0.03,
   },
   {
     name: 'Free Shipping Threshold',
     slug: 'free-shipping-threshold',
-    decision: 'ACCEPT',
+    decision: 'NONE',
     hypothesis:
       'Test the impact of different free shipping thresholds on average order value and overall sales to find the optimal threshold for maximum revenue.',
     startDate: generateDatePlusDays(5),
     endDate: generateDatePlusDays(19),
     teamId: TEAM_ID,
+    userId: USER_ID,
+    status: 'DRAFT',
+    improvement: null,
   },
 ];
