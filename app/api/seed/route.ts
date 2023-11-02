@@ -3,7 +3,7 @@ import { Prisma } from '@prisma/client';
 import { NextResponse } from 'next/server';
 
 const TEAM_ID = 'clnrf4dzp0000hniqjt0jl2fw';
-const USER_ID = 'clo72t60p0006hnszyv1m8r19';
+const USER_ID = 'clohpp2sq0000hnnatlp5na0x';
 
 export async function POST() {
   try {
