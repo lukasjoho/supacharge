@@ -6,10 +6,11 @@ import ScrollWrapper from '../../dashboard/timeline/components/ScrollWrapper';
 import TimelineHeader from '../../dashboard/timeline/components/TimelineHeader';
 import { TimelineOptions } from '../../dashboard/timeline/lib/options';
 import { generateRange } from '../../dashboard/timeline/lib/utils';
-import { experiment } from '../Variants/config';
+import { generateExperiment } from '../Variants/config';
 import Draggable from './Draggable';
 
 function generateMockProjects(today: Date) {
+  const experiment = generateExperiment(today);
   return [
     {
       id: '1',

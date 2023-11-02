@@ -68,7 +68,7 @@ export function generateExperiment(today: Date) {
   return {
     id: 'exp-hero-wording',
     name: 'Landing Page Hero Title',
-    startDate: subDays(today, -4).toISOString(),
+    startDate: subDays(today, 3).toISOString(),
     endDate: addDays(today, 11).toISOString(),
     isEnabled: true,
     decision: 'NONE',
